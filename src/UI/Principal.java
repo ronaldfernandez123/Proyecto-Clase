@@ -103,7 +103,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel4.setBounds(0, 0, 700, 100);
 
         jPanel1.add(jPanel3);
-        jPanel3.setBounds(10, 150, 700, 100);
+        jPanel3.setBounds(10, 120, 700, 100);
 
         jPanel4.setLayout(null);
 
@@ -129,10 +129,10 @@ public class Principal extends javax.swing.JFrame {
         jLabel6.setBounds(0, 0, 700, 100);
 
         jPanel1.add(jPanel4);
-        jPanel4.setBounds(10, 280, 700, 100);
+        jPanel4.setBounds(10, 230, 700, 100);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(10, 50, 723, 418);
+        jPanel1.setBounds(10, 50, 723, 350);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

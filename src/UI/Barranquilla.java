@@ -26,18 +26,99 @@ public class Barranquilla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(755, 430));
+        setSize(new java.awt.Dimension(755, 483));
+        getContentPane().setLayout(null);
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel1.setLayout(null);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setLayout(null);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Barranquilla Plaza  (1).jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(0, 0, 140, 130);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel3.setText("Hotel Barranquilla plaza ");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(150, 50, 190, 19);
+
+        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton1.setText("Reservar");
+        jPanel2.add(jButton1);
+        jButton1.setBounds(590, 50, 85, 24);
+
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(10, 10, 690, 130);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(null);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/windsorbarranquilla (1).jpg"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel3.add(jLabel4);
+        jLabel4.setBounds(0, 0, 140, 130);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel5.setText("Hotel Windsor Barranquilla ");
+        jPanel3.add(jLabel5);
+        jLabel5.setBounds(150, 50, 210, 19);
+
+        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton2.setText("Reservar");
+        jPanel3.add(jButton2);
+        jButton2.setBounds(590, 50, 85, 24);
+
+        jPanel1.add(jPanel3);
+        jPanel3.setBounds(10, 150, 690, 130);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setLayout(null);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Country (1).jpg"))); // NOI18N
+        jLabel6.setText("jLabel6");
+        jPanel4.add(jLabel6);
+        jLabel6.setBounds(0, 0, 140, 130);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel7.setText("Country International Hotel");
+        jPanel4.add(jLabel7);
+        jLabel7.setBounds(150, 60, 210, 19);
+
+        jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton3.setText("Reservar");
+        jPanel4.add(jButton3);
+        jButton3.setBounds(590, 50, 85, 24);
+
+        jPanel1.add(jPanel4);
+        jPanel4.setBounds(10, 290, 690, 130);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(10, 30, 710, 430);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel1.setText("Seleccione El Hotel Donde Desea Hacer Su Reserva");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(150, 0, 470, 26);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -78,5 +159,19 @@ public class Barranquilla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }
