@@ -26,18 +26,96 @@ public class RegisTuristaHotelWindsorBarranquilla extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField3 = new javax.swing.JTextField();
+        jComboBox3 = new javax.swing.JComboBox<>();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel1.setText("Ingrese sus Datos Para Realizar Su Reserva");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(70, 10, 400, 20);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(null);
+
+        jTextField1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jTextField1.setText("Nombres:");
+        jPanel1.add(jTextField1);
+        jTextField1.setBounds(20, 30, 180, 23);
+
+        jTextField2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jTextField2.setText("Apellidos:");
+        jPanel1.add(jTextField2);
+        jTextField2.setBounds(20, 60, 180, 23);
+
+        jComboBox1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo De Identificacion", "C.C", "N.I.T", "Pasaporte", "Licencia De Conducir" }));
+        jPanel1.add(jComboBox1);
+        jComboBox1.setBounds(20, 90, 180, 23);
+
+        jTextField3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jTextField3.setText("N° De Identificacion:");
+        jPanel1.add(jTextField3);
+        jTextField3.setBounds(20, 120, 180, 23);
+
+        jComboBox3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Que lugar desea reservar:", "Habitacion", "Penthouse", "Salon de Eventos", "Restaurante", " " }));
+        jPanel1.add(jComboBox3);
+        jComboBox3.setBounds(310, 30, 200, 23);
+
+        jTextField4.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jTextField4.setText("Motivo de su reserva:");
+        jPanel1.add(jTextField4);
+        jTextField4.setBounds(310, 60, 200, 20);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("Check In:");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(310, 90, 57, 17);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Check Out:");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(310, 120, 70, 17);
+        jPanel1.add(jDateChooser1);
+        jDateChooser1.setBounds(380, 90, 90, 22);
+        jPanel1.add(jDateChooser2);
+        jDateChooser2.setBounds(380, 120, 90, 22);
+
+        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton1.setText("Vaciar");
+        jPanel1.add(jButton1);
+        jButton1.setBounds(140, 220, 72, 24);
+
+        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton2.setText("Guardar");
+        jPanel1.add(jButton2);
+        jButton2.setBounds(310, 220, 90, 24);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo (4).jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel1.add(jLabel2);
+        jLabel2.setBounds(0, 0, 540, 260);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(10, 40, 539, 260);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -78,5 +156,20 @@ public class RegisTuristaHotelWindsorBarranquilla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox3;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
