@@ -117,8 +117,7 @@ private void editarReservaSeleccionada() {
         nuevoDocumento != null && nuevoLugar != null && nuevoMotivo != null &&
         nuevoCheckIn != null && nuevoCheckOut != null) {
 
-        Reserva reservaActualizada = new Reserva(nuevosNombres, nuevosApellidos, nuevoTipoID, nuevoDocumento,
-                                                 nuevoLugar, nuevoMotivo, nuevoCheckIn, nuevoCheckOut);
+        Reserva reservaActualizada = new Reserva(nuevosNombres, nuevosApellidos, nuevoTipoID, nuevoDocumento, nuevoLugar, nuevoMotivo, nuevoCheckIn, nuevoCheckOut);
 
         GestorReservas.editarReserva(documentoAntiguo, checkInAntiguo, reservaActualizada);
         cargarReservas();

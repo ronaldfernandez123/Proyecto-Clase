@@ -236,8 +236,8 @@
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
-                              <Component id="btnregistro" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                              <Component id="loginresgist" min="-2" pref="154" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace pref="99" max="32767" attributes="0"/>
@@ -286,9 +286,9 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="OBLIGACION" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
-                      <Component id="btnregistro" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="27" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="loginresgist" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="38" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -371,18 +371,18 @@
             </Component>
             <Component class="javax.swing.JPasswordField" name="tx_contrase&#xf1;a">
             </Component>
-            <Component class="javax.swing.JButton" name="btnregistro">
+            <Component class="javax.swing.JLabel" name="OBLIGACION">
+            </Component>
+            <Component class="javax.swing.JButton" name="loginresgist">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI Black" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="Registrar usuario"/>
+                <Property name="text" type="java.lang.String" value="Resgistrar"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnregistroActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginresgistActionPerformed"/>
               </Events>
-            </Component>
-            <Component class="javax.swing.JLabel" name="OBLIGACION">
             </Component>
           </SubComponents>
         </Container>

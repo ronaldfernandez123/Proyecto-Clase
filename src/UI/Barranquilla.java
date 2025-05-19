@@ -44,6 +44,7 @@ public class Barranquilla extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(755, 430));
@@ -139,6 +140,16 @@ public class Barranquilla extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(150, 0, 470, 26);
 
+        jButton4.setFont(new java.awt.Font("Segoe UI Black", 1, 10)); // NOI18N
+        jButton4.setText("Regresar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(0, 0, 80, 21);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -156,6 +167,11 @@ public class Barranquilla extends javax.swing.JFrame {
         // TODO add your handling code here:
         new RegisTuristaHotelWindsorBarranquilla().setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        new Principal().setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,6 +212,7 @@ public class Barranquilla extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -5,7 +5,7 @@
 
 package Vistas.Tuista.WiewBarranquilla;
 
-
+import java.lang.String;
 import javax.swing.JOptionPane;
 import java.util.Date;
 import Modelo.Reserva;
@@ -149,7 +149,7 @@ public class RegisTuristaHotelBarranquillaPlaza extends javax.swing.JFrame {
     Date fechaCheckOut = jCalendarCheckOut.getDate();
 
     // Crear objeto Reserva
-    Reserva nuevaReserva = new Reserva(nombres, apellidos, tipoId, documento, lugar, motivo, fechaCheckIn, fechaCheckOut);
+    Reserva nuevaReserva = new Reserva( nombres,  apellidos, tipoId, documento, lugar,  motivo,  fechaCheckIn,  fechaCheckOut);
 
     // Guardar con el gestor
     GestorReservas gestor = new GestorReservas();

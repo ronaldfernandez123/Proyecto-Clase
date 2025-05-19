@@ -22,90 +22,85 @@ public class Reserva {
     private String checkIn;
     private String checkOut;
 
-    public Reserva() {
+    public Reserva(String nuevosNombres, String nuevosApellidos, String nuevoTipoID, String nuevoDocumento, String nuevoLugar, String nuevoMotivo, String nuevoCheckIn, String nuevoCheckOut) {
     }
 
-    public Reserva(String nombres, String apellidos, String tipoIdentificacion, String documento,
-                   String lugar, String motivo, String checkIn, String checkOut) {
+    public Reserva(String nombres, String apellidos, String tipoIdentificacion, String documento, String lugar, String motivo, Date checkIn, Date checkOut) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.tipoIdentificacion = tipoIdentificacion;
         this.documento = documento;
         this.lugar = lugar;
         this.motivo = motivo;
-        this.checkIn = checkIn;
-        this.checkOut = checkOut;
-    }
+        this.checkIn = this.checkIn;
+        this.checkOut = this.checkOut;
+    }   
 
-    public Reserva(String nombres, String apellidos, String tipoId, String documento, String lugar, String motivo, Date fechaCheckIn, Date fechaCheckOut) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    // Getters
     public String getNombres() {
         return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
     }
 
     public String getApellidos() {
         return apellidos;
     }
 
-    public String getTipoIdentificacion() {
-        return tipoIdentificacion;
-    }
-
-    public String getDocumento() {
-        return documento;
-    }
-
-    public String getLugar() {
-        return lugar;
-    }
-
-    public String getMotivo() {
-        return motivo;
-    }
-
-    public String getCheckIn() {
-        return checkIn;
-    }
-
-    public String getCheckOut() {
-        return checkOut;
-    }
-
-    // Setters
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
-    }
-
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
+    }
+
+    public String getTipoIdentificacion() {
+        return tipoIdentificacion;
     }
 
     public void setTipoIdentificacion(String tipoIdentificacion) {
         this.tipoIdentificacion = tipoIdentificacion;
     }
 
+    public String getDocumento() {
+        return documento;
+    }
+
     public void setDocumento(String documento) {
         this.documento = documento;
+    }
+
+    public String getLugar() {
+        return lugar;
     }
 
     public void setLugar(String lugar) {
         this.lugar = lugar;
     }
 
+    public String getMotivo() {
+        return motivo;
+    }
+
     public void setMotivo(String motivo) {
         this.motivo = motivo;
+    }
+
+    public String getCheckIn() {
+        return checkIn;
     }
 
     public void setCheckIn(String checkIn) {
         this.checkIn = checkIn;
     }
 
+    public String getCheckOut() {
+        return checkOut;
+    }
+
     public void setCheckOut(String checkOut) {
         this.checkOut = checkOut;
     }
+
+
 }
 
 

@@ -4,6 +4,13 @@
  */
 package Vistas.Tuista.WiewBarranquilla;
 
+import Datos.GestorReservas;
+import Modelo.Reserva;
+import UI.Barranquilla;
+import UI.MisReservas;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Administrator
@@ -28,19 +35,20 @@ public class RegisTuristaHotelCountry extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField3 = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jTextField4 = new javax.swing.JTextField();
+        txtNombres = new javax.swing.JTextField();
+        txtApellidos = new javax.swing.JTextField();
+        cbxTipoId = new javax.swing.JComboBox<>();
+        txtDocumento = new javax.swing.JTextField();
+        cbxLugar = new javax.swing.JComboBox<>();
+        txtMotivo = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jCalendarCheckIn = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jCalendarCheckOut = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        Regresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,51 +58,51 @@ public class RegisTuristaHotelCountry extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        jTextField1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jTextField1.setText("Nombres:");
-        jPanel1.add(jTextField1);
-        jTextField1.setBounds(20, 30, 180, 23);
+        txtNombres.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        txtNombres.setText("Nombres:");
+        jPanel1.add(txtNombres);
+        txtNombres.setBounds(20, 30, 180, 23);
 
-        jTextField2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jTextField2.setText("Apellidos:");
-        jPanel1.add(jTextField2);
-        jTextField2.setBounds(20, 60, 180, 23);
+        txtApellidos.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        txtApellidos.setText("Apellidos:");
+        jPanel1.add(txtApellidos);
+        txtApellidos.setBounds(20, 60, 180, 23);
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo De Identificacion", "C.C", "N.I.T", "Pasaporte", "Licencia De Conducir" }));
-        jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(20, 90, 180, 23);
+        cbxTipoId.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        cbxTipoId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo De Identificacion", "C.C", "N.I.T", "Pasaporte", "Licencia De Conducir" }));
+        jPanel1.add(cbxTipoId);
+        cbxTipoId.setBounds(20, 90, 180, 23);
 
-        jTextField3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jTextField3.setText("N° De Identificacion:");
-        jPanel1.add(jTextField3);
-        jTextField3.setBounds(20, 120, 180, 23);
+        txtDocumento.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        txtDocumento.setText("N° De Identificacion:");
+        jPanel1.add(txtDocumento);
+        txtDocumento.setBounds(20, 120, 180, 23);
 
-        jComboBox3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Que lugar desea reservar:", "Habitacion", "Penthouse", "Salon de Eventos", "Restaurante", " " }));
-        jPanel1.add(jComboBox3);
-        jComboBox3.setBounds(310, 30, 200, 23);
+        cbxLugar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        cbxLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Que lugar desea reservar:", "Habitacion", "Penthouse", "Salon de Eventos", "Restaurante", " " }));
+        jPanel1.add(cbxLugar);
+        cbxLugar.setBounds(310, 30, 200, 23);
 
-        jTextField4.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jTextField4.setText("Motivo de su reserva:");
-        jPanel1.add(jTextField4);
-        jTextField4.setBounds(310, 60, 200, 20);
+        txtMotivo.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        txtMotivo.setText("Motivo de su reserva:");
+        jPanel1.add(txtMotivo);
+        txtMotivo.setBounds(310, 60, 200, 20);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Check In:");
         jPanel1.add(jLabel7);
         jLabel7.setBounds(310, 90, 57, 17);
-        jPanel1.add(jDateChooser1);
-        jDateChooser1.setBounds(380, 90, 90, 22);
+        jPanel1.add(jCalendarCheckIn);
+        jCalendarCheckIn.setBounds(380, 90, 90, 22);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Check Out:");
         jPanel1.add(jLabel8);
         jLabel8.setBounds(310, 120, 70, 17);
-        jPanel1.add(jDateChooser2);
-        jDateChooser2.setBounds(380, 120, 90, 22);
+        jPanel1.add(jCalendarCheckOut);
+        jCalendarCheckOut.setBounds(380, 120, 90, 22);
 
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton1.setText("Vaciar");
@@ -103,6 +111,11 @@ public class RegisTuristaHotelCountry extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton2.setText("Guardar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton2);
         jButton2.setBounds(310, 220, 90, 24);
 
@@ -110,6 +123,13 @@ public class RegisTuristaHotelCountry extends javax.swing.JFrame {
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(0, 0, 540, 260);
+
+        Regresar.setText("Regresar");
+        Regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RegresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,8 +141,14 @@ public class RegisTuristaHotelCountry extends javax.swing.JFrame {
                 .addGap(79, 79, 79))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(Regresar)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 539, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,11 +157,46 @@ public class RegisTuristaHotelCountry extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Regresar)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void RegresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegresarActionPerformed
+        // TODO add your handling code here:
+        new Barranquilla().setVisible(true);
+        
+    }//GEN-LAST:event_RegresarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String nombres = txtNombres.getText();
+    String apellidos = txtApellidos.getText();
+    String tipoId = (String) cbxTipoId.getSelectedItem();
+    String documento = txtDocumento.getText();
+    String lugar = (String) cbxLugar.getSelectedItem();
+    String motivo = txtMotivo.getText();
+    Date fechaCheckIn = jCalendarCheckIn.getDate();
+    Date fechaCheckOut = jCalendarCheckOut.getDate();
+
+    // Crear objeto Reserva
+    Reserva nuevaReserva = new Reserva( nombres,  apellidos, tipoId, documento, lugar,  motivo,  fechaCheckIn,  fechaCheckOut);
+
+    // Guardar con el gestor
+    GestorReservas gestor = new GestorReservas();
+    gestor.agregarReserva(nuevaReserva); // Esto guarda en JSON
+
+    // Mostrar mensaje
+    JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
+
+    // Notificar a MisReservas si está abierta
+    if (MisReservas.instanciaActiva != null) {
+        MisReservas.instanciaActiva.cargarReservas();  // actualizar JTable
+    }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -173,20 +234,21 @@ public class RegisTuristaHotelCountry extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Regresar;
+    private javax.swing.JComboBox<String> cbxLugar;
+    private javax.swing.JComboBox<String> cbxTipoId;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    private com.toedter.calendar.JDateChooser jCalendarCheckIn;
+    private com.toedter.calendar.JDateChooser jCalendarCheckOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtDocumento;
+    private javax.swing.JTextField txtMotivo;
+    private javax.swing.JTextField txtNombres;
     // End of variables declaration//GEN-END:variables
 }

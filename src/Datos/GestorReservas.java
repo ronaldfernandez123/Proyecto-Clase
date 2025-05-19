@@ -20,7 +20,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class GestorReservas {
-    private static final String ARCHIVO = "reservas.json";
+    private static final String ARCHIVO = "C:\\Users\\SARA\\Documents\\NetBeansProjects\\Proyecto-Clase\\src\\Resoursereservas\\misreservas.json";
+    private final ArrayList<Object> reservas;
 
     public ArrayList<Reserva> obtenerReservasPorDocumento(String documento) {
         ArrayList<Reserva> resultado = new ArrayList<>();
@@ -78,10 +79,31 @@ public class GestorReservas {
         }
     }
 
+
+    // Constructor
+    public GestorReservas() {
+        this.reservas = new ArrayList<>();
+    }
+
+    // Método para agregar una reserva
     public void agregarReserva(Reserva nuevaReserva) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        reservas.add(nuevaReserva);
+        guardarEnJSON(); // Método para persistir en JSON
+    }
+
+    // Método para cargar reservas desde JSON (si lo implementas)
+    public void cargarReservas() {
+        // Aquí podrías cargar reservas desde un archivo JSON
+    }
+
+    // Método simulado para guardar en JSON
+    private void guardarEnJSON() {
+        System.out.println("Guardando reservas en JSON...");
+        // Implementar lógica para escribir reservas en un archivo JSON
     }
 }
+
+
 
 
 

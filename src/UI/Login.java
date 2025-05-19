@@ -4,11 +4,11 @@
  */
 package UI;
 
-import Datos.Registror;
-import Datos.conex;
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
+
+import Datos.UsuarioDAO;
+import Modelo.Usuario;
 import java.sql.ResultSet;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -17,10 +17,6 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JFrame {
 
-       
-    Registror op = new Registror();
-    conex con = new conex();
-    Connection cn = (Connection) con.ConectarBd();
     /**
      * Creates new form Login
      */
@@ -62,8 +58,8 @@ public class Login extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         tx_cargo = new javax.swing.JComboBox<>();
         tx_contraseña = new javax.swing.JPasswordField();
-        btnregistro = new javax.swing.JButton();
         OBLIGACION = new javax.swing.JLabel();
+        loginresgist = new javax.swing.JButton();
 
         jTextField1.setText("jTextField1");
 
@@ -171,11 +167,11 @@ public class Login extends javax.swing.JFrame {
 
         tx_cargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Usuario", "Administrador", " " }));
 
-        btnregistro.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        btnregistro.setText("Registrar usuario");
-        btnregistro.addActionListener(new java.awt.event.ActionListener() {
+        loginresgist.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        loginresgist.setText("Resgistrar");
+        loginresgist.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnregistroActionPerformed(evt);
+                loginresgistActionPerformed(evt);
             }
         });
 
@@ -215,8 +211,8 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jLabel14)
                             .addComponent(OBLIGACION, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(227, 227, 227)
-                        .addComponent(btnregistro)))
+                        .addGap(212, 212, 212)
+                        .addComponent(loginresgist, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(99, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -253,9 +249,9 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(tx_contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(OBLIGACION)
-                .addGap(17, 17, 17)
-                .addComponent(btnregistro)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(loginresgist)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("registrar", jPanel2);
@@ -268,7 +264,7 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 452, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -280,51 +276,108 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void Iniciar_sesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Iniciar_sesionActionPerformed
+String correo = tx_usuario.getText().trim();
+String contraseña = new String(tx_contra.getPassword());
 
-        String usuario = tx_usuario.getText();
-        String passw = tx_contra.getText();
-        if (!usuario.equals("") || !passw.equals("")) {
-            try {
-                PreparedStatement ps = (PreparedStatement) cn.prepareStatement("SELECT cargo from usuarios WHERE Email='" + usuario + "' and Contraseña='" + passw + "'");
+if (correo.isEmpty() || contraseña.isEmpty()) {
+    JOptionPane.showMessageDialog(this, "Debe ingresar correo y contraseña.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+    return;
+}
 
-                ResultSet rs = ps.executeQuery();
-                if (rs.next()) {
-                    String cargo = rs.getString("cargo");
-                    if (cargo.equalsIgnoreCase("Usuario")|| cargo.equalsIgnoreCase("Administrador")) {
+UsuarioDAO usuarioDAO = new UsuarioDAO();
+List<Usuario> usuarios = usuarioDAO.leerUsuarios();
 
-                     new Principal().setVisible(true);
+boolean encontrado = false;
 
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "USUARIO Y/O CONTRASEÑA INCORRECTOS");
-                }
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "NO SE PUEDE INICIAR SECCION");
-            }
+for (Usuario usuario : usuarios) {
+    if (correo.equals(usuario.getEmail()) && contraseña.equals(usuario.getContraseña())) {
+        encontrado = true;
+        JOptionPane.showMessageDialog(this, "¡Bienvenido, " + usuario.getNombres() + "!");
+
+        String cargo = usuario.getCargo();
+
+        if (cargo.equalsIgnoreCase("Administrador")) {
+            // Abrir la ventana del administrador
+                new Principal().setVisible(true);
+        } else if (cargo.equalsIgnoreCase("Usuario")) {
+            // Abrir la ventana del Usuario
+                new MisReservas().setVisible(true);
         } else {
-
-            JOptionPane.showMessageDialog(null, "Por favor, ingresar los datos");
+            // Si hay otros cargos, puedes manejarlos aquí
+            JOptionPane.showMessageDialog(this, "Rol no reconocido: " + cargo, "Error", JOptionPane.ERROR_MESSAGE);
         }
+
+        // Cierra la ventana de login (opcional)
+        this.dispose();
+        break;
+    }
+}
+
+if (!encontrado) {
+    JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.", "Error", JOptionPane.ERROR_MESSAGE);
+}
+
         // TODO add your handling code here:
     }//GEN-LAST:event_Iniciar_sesionActionPerformed
-
-    private void btnregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistroActionPerformed
-        String nombres = tx_nombres.getText();
-        String apellidos = tx_apellidos.getText();
-        String tipoDocumento = tx_documento.getSelectedItem().toString();
-        String nrodocumento = tx_nroDocumento.getText();
-        String Email = tx_email.getText();
-        String cargo = tx_cargo.getSelectedItem().toString();
-        String Contraseña = tx_contraseña.getText();
-
-        op.registro(nombres, apellidos, tipoDocumento,nrodocumento, Email, cargo, Contraseña,  OBLIGACION);
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnregistroActionPerformed
 
     private void tx_nroDocumentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tx_nroDocumentoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tx_nroDocumentoActionPerformed
+
+    private void loginresgistActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginresgistActionPerformed
+                                      
+    // 1) Leer valores de los campos
+    String nombres        = tx_nombres.getText().trim();
+    String apellidos      = tx_apellidos.getText().trim();
+    String tipoDocumento  = tx_documento.getSelectedItem().toString();
+    String nroDocumento   = tx_nroDocumento.getText().trim();
+    String email          = tx_email.getText().trim();
+    String cargo          = tx_cargo.getSelectedItem().toString();
+    String contraseña     = new String(tx_contraseña.getPassword()).trim();
+
+    // 2) Validar que no haya campos vacíos
+    if (nombres.isEmpty() || apellidos.isEmpty() || tipoDocumento.equals("Seleccionar")
+        || nroDocumento.isEmpty() || email.isEmpty() || cargo.equals("Seleccionar")
+        || contraseña.isEmpty()) {
+        JOptionPane.showMessageDialog(this, "Por favor, completa todos los campos.",
+                                      "Error de validación", JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    // 3) Crear objeto Usuario
+    Usuario nuevo = new Usuario(nombres,
+                                apellidos,
+                                tipoDocumento,
+                                nroDocumento,
+                                email,
+                                cargo,
+                                contraseña);
+
+    // 4) Guardar con UsuarioDAO
+    try {
+        UsuarioDAO dao = new UsuarioDAO();
+        dao.guardarUsuario(nuevo);
+        JOptionPane.showMessageDialog(this, "Usuario registrado correctamente.",
+                                      "Éxito", JOptionPane.INFORMATION_MESSAGE);
+
+        // Opcional: limpiar campos
+        tx_nombres.setText("");
+        tx_apellidos.setText("");
+        tx_documento.setSelectedIndex(0);
+        tx_nroDocumento.setText("");
+        tx_email.setText("");
+        tx_cargo.setSelectedIndex(0);
+        tx_contraseña.setText("");
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this, "Error al guardar el usuario:\n" + ex.getMessage(),
+                                      "Error", JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
+      
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_loginresgistActionPerformed
 
     /**
      * @param args the command line arguments
@@ -364,7 +417,6 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Iniciar_sesion;
     private javax.swing.JLabel OBLIGACION;
-    private javax.swing.JButton btnregistro;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -380,6 +432,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton loginresgist;
     private javax.swing.JTextField tx_apellidos;
     private javax.swing.JComboBox<String> tx_cargo;
     private javax.swing.JPasswordField tx_contra;
