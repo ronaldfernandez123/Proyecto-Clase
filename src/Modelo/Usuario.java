@@ -29,6 +29,7 @@ public class Usuario {
         this.cargo = cargo;
         this.contraseña = contraseña;
     }
+    
 
     public String getNombres() { return nombres; }
     public void setNombres(String nombres) { this.nombres = nombres; }
@@ -41,6 +42,7 @@ public class Usuario {
 
     public String getNroDocumento() { return nroDocumento; }
     public void setNroDocumento(String nroDocumento) { this.nroDocumento = nroDocumento; }
+    
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
@@ -50,6 +52,10 @@ public class Usuario {
 
     public String getContraseña() { return contraseña; }
     public void setContraseña(String contraseña) { this.contraseña = contraseña; }
+    
+    
+    
 }
+
 
 

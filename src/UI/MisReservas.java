@@ -4,11 +4,13 @@
  */
 package UI;
 
+import DAO.ReservaDAO;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import Datos.GestorReservas;
 import Modelo.Reserva;
+import java.util.List;
 
 
 /**
@@ -16,50 +18,43 @@ import Modelo.Reserva;
  * @author Administrator
  */
 public class MisReservas extends javax.swing.JFrame {
+    DefaultTableModel model = new DefaultTableModel();
 
     /**
      * Creates new form MisReservas
      */
     public MisReservas() {
-        this.documentoUsuario = documentoUsuario;
-        instanciaActiva = this; // registrar instancia activa
         initComponents();
-        cargarReservas();
+          this.documentoUsuario = documentoUsuario;
+        instanciaActiva = this;
     }
     
     // Variable que almacena el documento del usuario logueado
 private String documentoUsuario;
 
 // Método para cargar reservas en la tabla
-public void cargarReservas() {
-    GestorReservas gestor = new GestorReservas();
-    ArrayList<Reserva> reservas = gestor.obtenerReservasPorDocumento(documentoUsuario);
+public void cargarReservasEnTabla() {
+    model.setColumnIdentifiers(new Object[]{"Nombre","Apellido","Tipo ID","Numero ID","Lugar reserva","Check in","Check out"});
+    model.setRowCount(0);
+    ReservaDAO reservaDAO = new ReservaDAO();
+    List<Reserva> lista = reservaDAO.listarReservas();
 
-    DefaultTableModel modelo = new DefaultTableModel();
-    modelo.addColumn("Nombres");
-    modelo.addColumn("Apellidos");
-    modelo.addColumn("Tipo ID");
-    modelo.addColumn("Documento");
-    modelo.addColumn("Lugar");
-    modelo.addColumn("Motivo");
-    modelo.addColumn("Check-In");
-    modelo.addColumn("Check-Out");
-
-    for (Reserva r : reservas) {
-        modelo.addRow(new Object[]{
+    for (Reserva r : lista) {
+        model.addRow(new Object[]{
+            r.getDocumento(),
             r.getNombres(),
+            r.getCheckIn(),
+            r.getCheckOut(),
+            r.getLugar(),
             r.getApellidos(),
             r.getTipoIdentificacion(),
-            r.getDocumento(),
-            r.getLugar(),
-            r.getMotivo(),
-            r.getCheckIn(),
-            r.getCheckOut()
+            r.getMotivo()
+               
         });
+        tablaReservas.setModel(model);
     }
-
-    tablaReservas.setModel(modelo);
 }
+
 
 // Método para eliminar una reserva seleccionada
 private void eliminarReservaSeleccionada() {
@@ -77,7 +72,7 @@ private void eliminarReservaSeleccionada() {
         GestorReservas gestor = new GestorReservas();
         if (gestor.eliminarReserva(documento, checkIn)) {
             JOptionPane.showMessageDialog(this, "Reserva eliminada.");
-            cargarReservas(); // Recargar la tabla
+            cargarReservasEnTabla(); // Recargar la tabla
         } else {
             JOptionPane.showMessageDialog(this, "No se pudo eliminar.");
         }
@@ -95,35 +90,35 @@ private void editarReservaSeleccionada() {
 
     DefaultTableModel modelo = (DefaultTableModel) tablaReservas.getModel();
 
-    String nombresAntiguo = modelo.getValueAt(fila, 0).toString();
-    String apellidosAntiguo = modelo.getValueAt(fila, 1).toString();
-    String tipoIDAntiguo = modelo.getValueAt(fila, 2).toString();
-    String documentoAntiguo = modelo.getValueAt(fila, 3).toString();
-    String lugarAntiguo = modelo.getValueAt(fila, 4).toString();
-    String motivoAntiguo = modelo.getValueAt(fila, 5).toString();
-    String checkInAntiguo = modelo.getValueAt(fila, 6).toString();
-    String checkOutAntiguo = modelo.getValueAt(fila, 7).toString();
+           String nombresAntiguo = model.getValueAt(fila, 0).toString();
+        String apellidosAntiguo = model.getValueAt(fila, 1).toString();
+        String tipoIDAntiguo = model.getValueAt(fila, 2).toString();
+        String documentoAntiguo = model.getValueAt(fila, 3).toString();
+        String lugarAntiguo = model.getValueAt(fila, 4).toString();
+        String checkInAntiguo = model.getValueAt(fila, 5).toString();
+        String checkOutAntiguo = model.getValueAt(fila, 6).toString();
 
-    String nuevosNombres = JOptionPane.showInputDialog(this, "Editar nombres:", nombresAntiguo);
-    String nuevosApellidos = JOptionPane.showInputDialog(this, "Editar apellidos:", apellidosAntiguo);
-    String nuevoTipoID = JOptionPane.showInputDialog(this, "Editar tipo de ID:", tipoIDAntiguo);
-    String nuevoDocumento = JOptionPane.showInputDialog(this, "Editar documento:", documentoAntiguo);
-    String nuevoLugar = JOptionPane.showInputDialog(this, "Editar lugar:", lugarAntiguo);
-    String nuevoMotivo = JOptionPane.showInputDialog(this, "Editar motivo:", motivoAntiguo);
-    String nuevoCheckIn = JOptionPane.showInputDialog(this, "Editar Check-In:", checkInAntiguo);
-    String nuevoCheckOut = JOptionPane.showInputDialog(this, "Editar Check-Out:", checkOutAntiguo);
+        String nuevosNombres = JOptionPane.showInputDialog(this, "Editar nombres:", nombresAntiguo);
+        String nuevosApellidos = JOptionPane.showInputDialog(this, "Editar apellidos:", apellidosAntiguo);
+        String nuevoTipoID = JOptionPane.showInputDialog(this, "Editar tipo de ID:", tipoIDAntiguo);
+        String nuevoDocumento = JOptionPane.showInputDialog(this, "Editar documento:", documentoAntiguo);
+        String nuevoLugar = JOptionPane.showInputDialog(this, "Editar lugar:", lugarAntiguo);
+        String nuevoCheckIn = JOptionPane.showInputDialog(this, "Editar Check-In:", checkInAntiguo);
+        String nuevoCheckOut = JOptionPane.showInputDialog(this, "Editar Check-Out:", checkOutAntiguo);
 
-    if (nuevosNombres != null && nuevosApellidos != null && nuevoTipoID != null &&
-        nuevoDocumento != null && nuevoLugar != null && nuevoMotivo != null &&
-        nuevoCheckIn != null && nuevoCheckOut != null) {
+        if (nuevosNombres != null && nuevosApellidos != null && nuevoTipoID != null &&
+            nuevoDocumento != null && nuevoLugar != null && nuevoCheckIn != null &&
+            nuevoCheckOut != null) {
 
-        Reserva reservaActualizada = new Reserva(nuevosNombres, nuevosApellidos, nuevoTipoID, nuevoDocumento, nuevoLugar, nuevoMotivo, nuevoCheckIn, nuevoCheckOut);
+            Reserva reservaActualizada = new Reserva(nuevosNombres, nuevosApellidos, nuevoTipoID,
+                nuevoDocumento, nuevoLugar, "", nuevoCheckIn, nuevoCheckOut);
 
-        GestorReservas.editarReserva(documentoAntiguo, checkInAntiguo, reservaActualizada);
-        cargarReservas();
-        JOptionPane.showMessageDialog(this, "Reserva actualizada.");
+            GestorReservas.editarReserva(documentoAntiguo, checkInAntiguo, reservaActualizada);
+            cargarReservasEnTabla();
+            JOptionPane.showMessageDialog(this, "Reserva actualizada.");
+        }
     }
-}
+
 
   public static MisReservas instanciaActiva = null; // variable estática
   private void formWindowClosing(java.awt.event.WindowEvent evt) {                                   
@@ -150,6 +145,7 @@ private void editarReservaSeleccionada() {
         btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -161,15 +157,23 @@ private void editarReservaSeleccionada() {
 
         tablaReservas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Apellido", "Tipo ID", "Numero ID", "Lugar reserva", "Check in", "Check out"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tablaReservas);
 
         jPanel1.add(jScrollPane1);
@@ -194,12 +198,20 @@ private void editarReservaSeleccionada() {
         btnEditar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btnEditar.setText("Editar");
 
+        jButton1.setText("Menu principal");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(249, 249, 249))
             .addGroup(layout.createSequentialGroup()
@@ -219,8 +231,11 @@ private void editarReservaSeleccionada() {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1))
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -241,8 +256,13 @@ private void editarReservaSeleccionada() {
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
         // TODO add your handling code here:
-        cargarReservas();
+        cargarReservasEnTabla();
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+                new Principal().setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,9 +303,12 @@ private void editarReservaSeleccionada() {
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaReservas;
     // End of variables declaration//GEN-END:variables
+
+    
 }

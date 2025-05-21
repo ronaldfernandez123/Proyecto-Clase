@@ -4,11 +4,15 @@
  */
 package Vistas.Tuista.WiewBarranquilla;
 
+import DAO.ReservaDAO;
 import Datos.GestorReservas;
 import Modelo.Reserva;
 import UI.MisReservas;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -45,7 +49,7 @@ public class RegisTuristaHotelWindsorBarranquilla extends javax.swing.JFrame {
         jCalendarCheckIn = new com.toedter.calendar.JDateChooser();
         jCalendarCheckOut = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        Guardar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -117,15 +121,20 @@ public class RegisTuristaHotelWindsorBarranquilla extends javax.swing.JFrame {
         jPanel1.add(jButton1);
         jButton1.setBounds(140, 220, 72, 24);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton2.setText("Guardar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+        Guardar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        Guardar.setText("Guardar");
+        Guardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                GuardarMouseClicked(evt);
             }
         });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(310, 220, 90, 24);
+        Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Guardar);
+        Guardar.setBounds(310, 220, 90, 24);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -179,32 +188,40 @@ public class RegisTuristaHotelWindsorBarranquilla extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDocumentoActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         // TODO add your handling code here:
-        String nombres = txtNombres.getText();
-    String apellidos = txtApellidos.getText();
-    String tipoId = (String) cbxTipoId.getSelectedItem();
-    String documento = txtDocumento.getText();
-    String lugar = (String) cbxLugar.getSelectedItem();
-    String motivo = txtMotivo.getText();
-    Date fechaCheckIn = jCalendarCheckIn.getDate();
-    Date fechaCheckOut = jCalendarCheckOut.getDate();
+                                                    
+   String nombres = txtNombres.getText();
+String apellidos = txtApellidos.getText();
+String tipoId = (String) cbxTipoId.getSelectedItem();
+String documento = txtDocumento.getText();
+String lugar = (String) cbxLugar.getSelectedItem();
+String motivo = txtMotivo.getText();
+Date fechaCheckIn = jCalendarCheckIn.getDate();
+Date fechaCheckOut = jCalendarCheckOut.getDate();
 
-    // Crear objeto Reserva
-    Reserva nuevaReserva = new Reserva( nombres,  apellidos, tipoId, documento, lugar,  motivo,  fechaCheckIn,  fechaCheckOut);
+// Crear objeto Reserva
+Reserva nuevaReserva = new Reserva(nombres, apellidos, tipoId, documento, lugar, motivo, fechaCheckIn, fechaCheckOut);
 
-    // Guardar con el gestor
-    GestorReservas gestor = new GestorReservas();
-    gestor.agregarReserva(nuevaReserva); // Esto guarda en JSON
+// Guardar con el gestor
+GestorReservas gestor = new GestorReservas();
+gestor.agregarReserva(nuevaReserva); // Esto guarda en JSON
 
-    // Mostrar mensaje
-    JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
+// Actualizar tabla si la ventana está abierta
+if (MisReservas.instanciaActiva != null) {
+    MisReservas.instanciaActiva.cargarReservasEnTabla();
+}
 
-    // Notificar a MisReservas si está abierta
-    if (MisReservas.instanciaActiva != null) {
-        MisReservas.instanciaActiva.cargarReservas();  // actualizar JTable
-    }
-    }//GEN-LAST:event_jButton2ActionPerformed
+// Mostrar mensaje
+JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
+
+
+
+    }//GEN-LAST:event_GuardarActionPerformed
+
+    private void GuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_GuardarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_GuardarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -242,10 +259,10 @@ public class RegisTuristaHotelWindsorBarranquilla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Guardar;
     private javax.swing.JComboBox<String> cbxLugar;
     private javax.swing.JComboBox<String> cbxTipoId;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jCalendarCheckIn;
     private com.toedter.calendar.JDateChooser jCalendarCheckOut;
     private javax.swing.JLabel jLabel1;

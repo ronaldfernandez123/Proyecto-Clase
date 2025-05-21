@@ -174,28 +174,29 @@ public class RegisTuristaHotelCountry extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         String nombres = txtNombres.getText();
-    String apellidos = txtApellidos.getText();
-    String tipoId = (String) cbxTipoId.getSelectedItem();
-    String documento = txtDocumento.getText();
-    String lugar = (String) cbxLugar.getSelectedItem();
-    String motivo = txtMotivo.getText();
-    Date fechaCheckIn = jCalendarCheckIn.getDate();
-    Date fechaCheckOut = jCalendarCheckOut.getDate();
+String apellidos = txtApellidos.getText();
+String tipoId = (String) cbxTipoId.getSelectedItem();
+String documento = txtDocumento.getText();
+String lugar = (String) cbxLugar.getSelectedItem();
+String motivo = txtMotivo.getText();
+Date fechaCheckIn = jCalendarCheckIn.getDate();
+Date fechaCheckOut = jCalendarCheckOut.getDate();
 
-    // Crear objeto Reserva
-    Reserva nuevaReserva = new Reserva( nombres,  apellidos, tipoId, documento, lugar,  motivo,  fechaCheckIn,  fechaCheckOut);
+// Crear objeto Reserva
+Reserva nuevaReserva = new Reserva(nombres, apellidos, tipoId, documento, lugar, motivo, fechaCheckIn, fechaCheckOut);
 
-    // Guardar con el gestor
-    GestorReservas gestor = new GestorReservas();
-    gestor.agregarReserva(nuevaReserva); // Esto guarda en JSON
+// Guardar con el gestor
+GestorReservas gestor = new GestorReservas();
+gestor.agregarReserva(nuevaReserva); // Esto guarda en JSON
 
-    // Mostrar mensaje
-    JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
+// Actualizar tabla si la ventana está abierta
+if (MisReservas.instanciaActiva != null) {
+    MisReservas.instanciaActiva.cargarReservasEnTabla();
+}
 
-    // Notificar a MisReservas si está abierta
-    if (MisReservas.instanciaActiva != null) {
-        MisReservas.instanciaActiva.cargarReservas();  // actualizar JTable
-    }
+// Mostrar mensaje
+JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

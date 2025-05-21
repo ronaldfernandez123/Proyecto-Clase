@@ -19,7 +19,7 @@ import java.util.List;
 
 public class ReservaDAO {
     private List<Reserva> reservas;
-    private final String archivo = "reservas.json";
+    private final String archivo = "C:\\Users\\SARA\\Documents\\NetBeansProjects\\proyectoAula\\Proyecto-Clase\\src\\resoursereser\\reservas.json";
     private final Gson gson = new Gson();
 
     public ReservaDAO() {
@@ -35,17 +35,19 @@ public class ReservaDAO {
         }
     }
 
-    private void guardarReservas() {
+    private void guardarReservas(Reserva reserva) {
         try (Writer writer = new FileWriter(archivo)) {
             gson.toJson(reservas, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+    
+    
 
     public void agregarReserva(Reserva r) {
         reservas.add(r);
-        guardarReservas();
+        guardarReservas((Reserva) reservas);
     }
 
     public List<Reserva> listarReservas() {
@@ -54,7 +56,7 @@ public class ReservaDAO {
 
     public void eliminarReserva(String documento) {
         reservas.removeIf(r -> r.getDocumento().equals(documento));
-        guardarReservas();
+        guardarReservas((Reserva) reservas);
     }
 
     public Reserva buscarPorDocumento(String documento) {
