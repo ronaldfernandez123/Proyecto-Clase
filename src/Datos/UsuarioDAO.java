@@ -12,7 +12,6 @@ package Datos;
 import Modelo.Usuario;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-
 import java.io.FileWriter;
 import java.io.FileReader;
 import java.io.IOException;
@@ -23,7 +22,7 @@ import java.util.List;
 
 public class UsuarioDAO {
 
-    private static final String FILE_PATH = "C:\\Users\\SARA\\Documents\\NetBeansProjects\\proyectoAula\\Proyecto-Clase\\src\\resourselogin\\usuario.json";
+    private static final String FILE_PATH = "C:\\Users\\SARA\\Documents\\NetBeansProjects\\Proyecto-Clase\\src\\ResourcesUsuario\\usuario.json";
     private Gson gson = new Gson();
 
     // Guarda un nuevo Usuario en el archivo JSON

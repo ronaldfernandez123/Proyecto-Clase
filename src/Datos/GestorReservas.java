@@ -14,94 +14,105 @@ package Datos;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import Modelo.Reserva;
-
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class GestorReservas {
-    private static final String ARCHIVO = "C:\\Users\\SARA\\Documents\\NetBeansProjects\\Proyecto-Clase\\src\\Resoursereservas\\misreservas.json";
-    private final ArrayList<Object> reservas;
+    private static final String ARCHIVO = "data/reservas.json";
+    private final Gson gson = new Gson();
 
-    public ArrayList<Reserva> obtenerReservasPorDocumento(String documento) {
-        ArrayList<Reserva> resultado = new ArrayList<>();
-        ArrayList<Reserva> todas = obtenerTodasLasReservas();
+    // Cargar todas las reservas desde el archivo JSON
+    public List<Reserva> obtenerTodasLasReservas() {
+        List<Reserva> reservas = new ArrayList<>();
+        try {
+            File archivo = new File(ARCHIVO);
+            if (!archivo.exists()) {
+                File carpeta = archivo.getParentFile();
+                if (carpeta != null && !carpeta.exists()) {
+                    carpeta.mkdirs();
+                }
+                archivo.createNewFile();
+                try (FileWriter writer = new FileWriter(archivo)) {
+                    writer.write("[]");
+                }
+            }
+
+            try (Reader reader = new FileReader(archivo)) {
+                Type tipoLista = new TypeToken<ArrayList<Reserva>>() {}.getType();
+                reservas = gson.fromJson(reader, tipoLista);
+                if (reservas == null) reservas = new ArrayList<>();
+            }
+        } catch (IOException e) {
+            System.out.println("Error al leer reservas: " + e.getMessage());
+        }
+        return reservas;
+    }
+
+    // Guardar todas las reservas en el archivo
+    private void guardarReservas(List<Reserva> reservas) {
+        try (Writer writer = new FileWriter(ARCHIVO)) {
+            gson.toJson(reservas, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Agregar una nueva reserva
+    public void agregarReserva(Reserva nuevaReserva) {
+        List<Reserva> reservas = obtenerTodasLasReservas();
+        reservas.add(nuevaReserva);
+        guardarReservas(reservas);
+    }
+
+    // Obtener reservas filtradas por documento
+    public List<Reserva> obtenerReservasPorDocumento(String documento) {
+        List<Reserva> resultado = new ArrayList<>();
+        List<Reserva> todas = obtenerTodasLasReservas();
 
         for (Reserva r : todas) {
             if (r.getDocumento().equals(documento)) {
                 resultado.add(r);
             }
         }
-
         return resultado;
     }
 
-    public ArrayList<Reserva> obtenerTodasLasReservas() {
-        ArrayList<Reserva> lista = new ArrayList<>();
-        try (Reader reader = new FileReader(ARCHIVO)) {
-            Type tipoLista = new TypeToken<ArrayList<Reserva>>(){}.getType();
-            lista = new Gson().fromJson(reader, tipoLista);
-            if (lista == null) lista = new ArrayList<>();
-        } catch (IOException e) {
-            System.out.println("Archivo no encontrado, se creará nuevo.");
-        }
-        return lista;
-    }
-
+    // Eliminar reserva por documento y fecha de check-in (formateada como string)
     public boolean eliminarReserva(String documento, String checkIn) {
-        ArrayList<Reserva> reservas = obtenerTodasLasReservas();
-        boolean eliminado = reservas.removeIf(r -> r.getDocumento().equals(documento) && r.getCheckIn().equals(checkIn));
+        List<Reserva> reservas = obtenerTodasLasReservas();
+        boolean eliminado = reservas.removeIf(r -> r.getDocumento().equals(documento)
+                && formatearFecha(r.getCheckIn()).equals(checkIn));
         if (eliminado) {
             guardarReservas(reservas);
         }
         return eliminado;
     }
 
-    public static void editarReserva(String documentoAntiguo, String checkInAntiguo, Reserva nuevaReserva) {
-        GestorReservas gestor = new GestorReservas();
-        ArrayList<Reserva> reservas = gestor.obtenerTodasLasReservas();
+    // Editar una reserva existente
+    public void editarReserva(String documentoAntiguo, String checkInAntiguo, Reserva nuevaReserva) {
+        List<Reserva> reservas = obtenerTodasLasReservas();
 
         for (int i = 0; i < reservas.size(); i++) {
             Reserva r = reservas.get(i);
-            if (r.getDocumento().equals(documentoAntiguo) && r.getCheckIn().equals(checkInAntiguo)) {
+            if (r.getDocumento().equals(documentoAntiguo)
+                    && formatearFecha(r.getCheckIn()).equals(checkInAntiguo)) {
                 reservas.set(i, nuevaReserva);
-                gestor.guardarReservas(reservas);
+                guardarReservas(reservas);
                 return;
             }
         }
     }
 
-    private void guardarReservas(ArrayList<Reserva> reservas) {
-        try (Writer writer = new FileWriter(ARCHIVO)) {
-            new Gson().toJson(reservas, writer);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    // Constructor
-    public GestorReservas() {
-        this.reservas = new ArrayList<>();
-    }
-
-    // Método para agregar una reserva
-    public void agregarReserva(Reserva nuevaReserva) {
-        reservas.add(nuevaReserva);
-        guardarEnJSON(); // Método para persistir en JSON
-    }
-
-    // Método para cargar reservas desde JSON (si lo implementas)
-    public void cargarReservas() {
-        // Aquí podrías cargar reservas desde un archivo JSON
-    }
-
-    // Método simulado para guardar en JSON
-    private void guardarEnJSON() {
-        System.out.println("Guardando reservas en JSON...");
-        // Implementar lógica para escribir reservas en un archivo JSON
+    // Formatear fecha para comparación
+    private String formatearFecha(Date fecha) {
+        if (fecha == null) return "";
+        return new java.text.SimpleDateFormat("yyyy-MM-dd").format(fecha);
     }
 }
+
 
 
 

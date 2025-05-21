@@ -2,25 +2,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 /**
  *
  * @author Administrator
  */
-
 package Modelo;
 
 import java.util.Date;
 
 public class Reserva {
+
     private String nombres;
     private String apellidos;
     private String tipoIdentificacion;
     private String documento;
     private String lugar;
     private String motivo;
-    private String checkIn;
-    private String checkOut;
+    private Date checkIn;
+    private Date checkOut;
 
     public Reserva(String nuevosNombres, String nuevosApellidos, String nuevoTipoID, String nuevoDocumento, String nuevoLugar, String nuevoMotivo, String nuevoCheckIn, String nuevoCheckOut) {
     }
@@ -34,7 +33,7 @@ public class Reserva {
         this.motivo = motivo;
         this.checkIn = this.checkIn;
         this.checkOut = this.checkOut;
-    }   
+    }
 
     public String getNombres() {
         return nombres;
@@ -84,23 +83,20 @@ public class Reserva {
         this.motivo = motivo;
     }
 
-    public String getCheckIn() {
+    public Date getCheckIn() {
         return checkIn;
     }
 
-    public void setCheckIn(String checkIn) {
-        this.checkIn = checkIn;
+    public void setFechaCheckIn(Date fechaCheckIn) {
+        this.checkIn = fechaCheckIn;
     }
 
-    public String getCheckOut() {
+    public Date getCheckOut() {
         return checkOut;
     }
 
-    public void setCheckOut(String checkOut) {
-        this.checkOut = checkOut;
+    public void setFechaCheckOut(Date fechaCheckOut) {
+        this.checkOut = fechaCheckOut;
     }
 
-
 }
-
-

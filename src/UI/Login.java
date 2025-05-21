@@ -22,6 +22,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -296,10 +297,10 @@ for (Usuario usuario : usuarios) {
 
         String cargo = usuario.getCargo();
 
-        if (cargo.equalsIgnoreCase("Administrador")) {
+        if (cargo.equalsIgnoreCase("Usuario")) {
             // Abrir la ventana del administrador
                 new Principal().setVisible(true);
-        } else if (cargo.equalsIgnoreCase("Usuario")) {
+        } else if (cargo.equalsIgnoreCase("Administrador")) {
             // Abrir la ventana del Usuario
                 new MisReservas().setVisible(true);
         } else {

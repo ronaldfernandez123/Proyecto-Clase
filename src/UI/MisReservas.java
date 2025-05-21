@@ -28,6 +28,8 @@ public class MisReservas extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.documentoUsuario = documentoUsuario;
         instanciaActiva = this;
+        cargarReservasEnTabla();
+        setLocationRelativeTo(null);// si quieres cargar al iniciar
     }
     
     // Variable que almacena el documento del usuario logueado
@@ -37,22 +39,23 @@ private String documentoUsuario;
 public void cargarReservasEnTabla() {
     model.setColumnIdentifiers(new Object[]{"Nombre","Apellido","Tipo ID","Numero ID","Lugar reserva","Check in","Check out"});
     model.setRowCount(0);
-    ReservaDAO reservaDAO = new ReservaDAO();
-    List<Reserva> lista = reservaDAO.listarReservas();
+    GestorReservas gestor = new GestorReservas();
+    List<Reserva> lista = gestor.obtenerTodasLasReservas(); // este método debe leer el JSON
+
+    DefaultTableModel modelo = (DefaultTableModel) tablaReservas.getModel();
+    modelo.setRowCount(0); // Limpiar la tabla antes de agregar
 
     for (Reserva r : lista) {
-        model.addRow(new Object[]{
-            r.getDocumento(),
+        modelo.addRow(new Object[]{
             r.getNombres(),
-            r.getCheckIn(),
-            r.getCheckOut(),
-            r.getLugar(),
             r.getApellidos(),
             r.getTipoIdentificacion(),
-            r.getMotivo()
-               
+            r.getDocumento(),
+            r.getLugar(),
+            r.getMotivo(),
+            r.getCheckIn(),
+            r.getCheckOut()
         });
-        tablaReservas.setModel(model);
     }
 }
 
@@ -114,7 +117,9 @@ private void editarReservaSeleccionada() {
             Reserva reservaActualizada = new Reserva(nuevosNombres, nuevosApellidos, nuevoTipoID,
                 nuevoDocumento, nuevoLugar, "", nuevoCheckIn, nuevoCheckOut);
 
-            GestorReservas.editarReserva(documentoAntiguo, checkInAntiguo, reservaActualizada);
+            GestorReservas gestor = new GestorReservas();
+            gestor.editarReserva(documentoAntiguo, checkInAntiguo, reservaActualizada);
+
             cargarReservasEnTabla();
             JOptionPane.showMessageDialog(this, "Reserva actualizada.");
         }
