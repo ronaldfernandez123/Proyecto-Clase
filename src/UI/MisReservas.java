@@ -25,7 +25,8 @@ public class MisReservas extends javax.swing.JFrame {
      */
     public MisReservas() {
         initComponents();
-          this.documentoUsuario = documentoUsuario;
+        setLocationRelativeTo(null);
+        this.documentoUsuario = documentoUsuario;
         instanciaActiva = this;
     }
     
@@ -197,6 +198,11 @@ private void editarReservaSeleccionada() {
 
         btnEditar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         btnEditar.setText("Editar");
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Menu principal");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -261,8 +267,14 @@ private void editarReservaSeleccionada() {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
                 new Principal().setVisible(true);
+                this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+        editarReservaSeleccionada();
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments

@@ -10,7 +10,12 @@ import javax.swing.JOptionPane;
 import java.util.Date;
 import Modelo.Reserva;
 import Datos.GestorReservas;
+import UI.Barranquilla;
 import UI.MisReservas;
+import com.google.gson.Gson;
+import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -24,6 +29,10 @@ public class RegisTuristaHotelBarranquillaPlaza extends javax.swing.JFrame {
      */
     public RegisTuristaHotelBarranquillaPlaza() {
         initComponents();
+        setMinimumSize(new Dimension(740, 540));
+        setSize(740, 540); // o el tamaño que prefieras
+        setLocationRelativeTo(null); // centra la ventana
+        setVisible(true); 
     }
 
     /**
@@ -51,6 +60,7 @@ public class RegisTuristaHotelBarranquillaPlaza extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -133,12 +143,24 @@ public class RegisTuristaHotelBarranquillaPlaza extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(10, 40, 530, 260);
 
+        jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton3.setText("Regresar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(0, 310, 90, 24);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     
+Gson gson = new Gson();
+List<Reserva> reservas = new ArrayList<>();        
     String nombres = txtNombres.getText();
 String apellidos = txtApellidos.getText();
 String tipoId = (String) cbxTipoId.getSelectedItem();
@@ -165,6 +187,12 @@ JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        new Barranquilla().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -206,6 +234,7 @@ JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
     private javax.swing.JComboBox<String> cbxTipoId;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private com.toedter.calendar.JDateChooser jCalendarCheckIn;
     private com.toedter.calendar.JDateChooser jCalendarCheckOut;
     private javax.swing.JLabel jLabel1;

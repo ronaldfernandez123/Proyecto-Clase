@@ -4,6 +4,8 @@
  */
 package UI;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author SARA
@@ -15,6 +17,11 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        setMinimumSize(new Dimension(740, 540));
+        setSize(740, 540); // o el tamaño que prefieras
+        setLocationRelativeTo(null); // centra la ventana
+        setVisible(true);  // asegura que se vea al abrirla
+
     }
 
     /**
@@ -150,22 +157,26 @@ public class Principal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new Bogota().setVisible(true);
+        this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
                 new Cartagena().setVisible(true);
+                this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
                 new Barranquilla().setVisible(true);
+                this.dispose();
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         new MisReservas().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

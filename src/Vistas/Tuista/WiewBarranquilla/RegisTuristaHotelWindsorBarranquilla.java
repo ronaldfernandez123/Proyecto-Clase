@@ -7,6 +7,7 @@ package Vistas.Tuista.WiewBarranquilla;
 import DAO.ReservaDAO;
 import Datos.GestorReservas;
 import Modelo.Reserva;
+import UI.Barranquilla;
 import UI.MisReservas;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -25,6 +26,8 @@ public class RegisTuristaHotelWindsorBarranquilla extends javax.swing.JFrame {
      */
     public RegisTuristaHotelWindsorBarranquilla() {
         initComponents();
+        setLocationRelativeTo(null);
+          
     }
 
     /**
@@ -57,14 +60,12 @@ public class RegisTuristaHotelWindsorBarranquilla extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("Ingrese sus Datos Para Realizar Su Reserva");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(70, 10, 400, 20);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
@@ -80,7 +81,7 @@ public class RegisTuristaHotelWindsorBarranquilla extends javax.swing.JFrame {
         cbxTipoId.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         cbxTipoId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "C.C", "N.I.T", "Pasaporte", "Licencia De Conducir" }));
         jPanel1.add(cbxTipoId);
-        cbxTipoId.setBounds(20, 130, 180, 23);
+        cbxTipoId.setBounds(20, 120, 180, 23);
 
         txtDocumento.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         txtDocumento.addActionListener(new java.awt.event.ActionListener() {
@@ -89,32 +90,32 @@ public class RegisTuristaHotelWindsorBarranquilla extends javax.swing.JFrame {
             }
         });
         jPanel1.add(txtDocumento);
-        txtDocumento.setBounds(20, 180, 180, 23);
+        txtDocumento.setBounds(20, 160, 180, 23);
 
         cbxLugar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         cbxLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Habitacion", "Penthouse", "Salon de Eventos", "Restaurante", " " }));
         jPanel1.add(cbxLugar);
-        cbxLugar.setBounds(310, 40, 200, 23);
+        cbxLugar.setBounds(320, 40, 190, 23);
 
         txtMotivo.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jPanel1.add(txtMotivo);
-        txtMotivo.setBounds(310, 90, 200, 20);
+        txtMotivo.setBounds(320, 80, 190, 20);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Check In:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(320, 110, 130, 19);
+        jLabel7.setBounds(320, 100, 130, 19);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Check Out:");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(320, 160, 90, 19);
+        jLabel8.setBounds(320, 140, 90, 19);
         jPanel1.add(jCalendarCheckIn);
-        jCalendarCheckIn.setBounds(320, 140, 180, 22);
+        jCalendarCheckIn.setBounds(320, 120, 90, 22);
         jPanel1.add(jCalendarCheckOut);
-        jCalendarCheckOut.setBounds(320, 180, 180, 22);
+        jCalendarCheckOut.setBounds(320, 160, 90, 22);
 
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jButton1.setText("Vaciar");
@@ -153,33 +154,64 @@ public class RegisTuristaHotelWindsorBarranquilla extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Tipo ID:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(30, 110, 70, 19);
+        jLabel5.setBounds(20, 100, 70, 19);
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Numero ID:");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(20, 160, 110, 19);
+        jLabel6.setBounds(20, 140, 110, 19);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Motivo reserva:");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(320, 70, 120, 19);
+        jLabel10.setBounds(320, 60, 120, 19);
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Lugar reserva:");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(320, 10, 120, 19);
+        jLabel9.setBounds(320, 20, 120, 19);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo (4).jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2);
         jLabel2.setBounds(0, 0, 540, 260);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(10, 40, 539, 260);
+        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton2.setText("Regresar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2))
+                .addContainerGap())
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -223,6 +255,12 @@ JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
         // TODO add your handling code here:
     }//GEN-LAST:event_GuardarMouseClicked
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new Barranquilla().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -263,6 +301,7 @@ JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
     private javax.swing.JComboBox<String> cbxLugar;
     private javax.swing.JComboBox<String> cbxTipoId;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private com.toedter.calendar.JDateChooser jCalendarCheckIn;
     private com.toedter.calendar.JDateChooser jCalendarCheckOut;
     private javax.swing.JLabel jLabel1;

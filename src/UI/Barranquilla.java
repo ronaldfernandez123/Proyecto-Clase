@@ -7,6 +7,8 @@ package UI;
 import Vistas.Tuista.WiewBarranquilla.RegisTuristaHotelBarranquillaPlaza;
 import Vistas.Tuista.WiewBarranquilla.RegisTuristaHotelCountry;
 import Vistas.Tuista.WiewBarranquilla.RegisTuristaHotelWindsorBarranquilla;
+import java.awt.Dimension;
+
 
 /**
  *
@@ -19,6 +21,11 @@ public class Barranquilla extends javax.swing.JFrame {
      */
     public Barranquilla() {
         initComponents();
+        setMinimumSize(new Dimension(740, 540));
+        setSize(740, 540); // o el tamaño que prefieras
+        setLocationRelativeTo(null); // centra la ventana
+        setVisible(true); // asegura que se vea al abrirla
+
     }
 
     /**
@@ -47,7 +54,7 @@ public class Barranquilla extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(755, 430));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(755, 483));
         getContentPane().setLayout(null);
 
@@ -148,7 +155,7 @@ public class Barranquilla extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(0, 0, 80, 21);
+        jButton4.setBounds(0, 470, 80, 21);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -156,21 +163,25 @@ public class Barranquilla extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         new RegisTuristaHotelBarranquillaPlaza().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         new RegisTuristaHotelCountry().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         new RegisTuristaHotelWindsorBarranquilla().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         new Principal().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
