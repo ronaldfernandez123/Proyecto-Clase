@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-package Vistas.Tuista.WiewBarranquilla;
+package UI;
 
 import java.lang.String;
 import javax.swing.JOptionPane;
@@ -22,12 +22,12 @@ import java.util.List;
  *
  * @author Administrator
  */
-public class RegisTuristaHotelBarranquillaPlaza extends javax.swing.JFrame {
+public class RegisTuristaHotel extends javax.swing.JFrame {
 
     /**
      * Creates new form RegisTuristaHotelBarranquillaPlaza
      */
-    public RegisTuristaHotelBarranquillaPlaza() {
+    public RegisTuristaHotel() {
         initComponents();
         setMinimumSize(new Dimension(740, 540));
         setSize(740, 540); // o el tamaño que prefieras
@@ -57,16 +57,18 @@ public class RegisTuristaHotelBarranquillaPlaza extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jCalendarCheckOut = new com.toedter.calendar.JDateChooser();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -80,10 +82,10 @@ public class RegisTuristaHotelBarranquillaPlaza extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(null);
 
-        cbxTipoId.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        cbxTipoId.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         cbxTipoId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "C.C", "N.I.T", "Pasaporte", "Licencia De Conducir" }));
         jPanel1.add(cbxTipoId);
-        cbxTipoId.setBounds(20, 120, 180, 23);
+        cbxTipoId.setBounds(20, 120, 180, 25);
 
         txtNombres.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jPanel1.add(txtNombres);
@@ -97,45 +99,30 @@ public class RegisTuristaHotelBarranquillaPlaza extends javax.swing.JFrame {
         jPanel1.add(txtDocumento);
         txtDocumento.setBounds(20, 160, 180, 23);
 
-        cbxLugar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        cbxLugar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         cbxLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Habitacion", "Penthouse", "Salon de Eventos", "Restaurante", " " }));
         jPanel1.add(cbxLugar);
-        cbxLugar.setBounds(320, 40, 200, 23);
+        cbxLugar.setBounds(320, 40, 200, 25);
 
         txtMotivo.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jPanel1.add(txtMotivo);
         txtMotivo.setBounds(320, 80, 200, 20);
         jPanel1.add(jCalendarCheckIn);
-        jCalendarCheckIn.setBounds(320, 120, 90, 22);
+        jCalendarCheckIn.setBounds(320, 160, 90, 22);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Check In:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(320, 100, 57, 17);
+        jLabel7.setBounds(320, 140, 57, 17);
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Check Out:");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(320, 140, 70, 17);
+        jLabel8.setBounds(320, 180, 70, 17);
         jPanel1.add(jCalendarCheckOut);
-        jCalendarCheckOut.setBounds(320, 160, 90, 22);
-
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton1.setText("Vaciar");
-        jPanel1.add(jButton1);
-        jButton1.setBounds(140, 220, 72, 24);
-
-        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton2.setText("Guardar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton2);
-        jButton2.setBounds(310, 220, 90, 24);
+        jCalendarCheckOut.setBounds(320, 200, 90, 22);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -170,9 +157,20 @@ public class RegisTuristaHotelBarranquillaPlaza extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Motivo reserva:");
+        jLabel10.setText("Numero de Habitaciones:");
         jPanel1.add(jLabel10);
-        jLabel10.setBounds(320, 60, 120, 19);
+        jLabel10.setBounds(320, 60, 190, 19);
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setText("Numero de Habitacion:");
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(320, 100, 180, 19);
+
+        jComboBox1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", " " }));
+        jPanel1.add(jComboBox1);
+        jComboBox1.setBounds(320, 120, 200, 25);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo (4).jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -190,7 +188,22 @@ public class RegisTuristaHotelBarranquillaPlaza extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(0, 310, 90, 24);
+        jButton3.setBounds(0, 350, 90, 24);
+
+        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton1.setText("Vaciar");
+        getContentPane().add(jButton1);
+        jButton1.setBounds(170, 310, 72, 24);
+
+        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton2.setText("Guardar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(290, 310, 90, 24);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,20 +263,21 @@ JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegisTuristaHotelBarranquillaPlaza.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisTuristaHotel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegisTuristaHotelBarranquillaPlaza.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisTuristaHotel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegisTuristaHotelBarranquillaPlaza.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisTuristaHotel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegisTuristaHotelBarranquillaPlaza.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegisTuristaHotel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new RegisTuristaHotelBarranquillaPlaza().setVisible(true);
+                new RegisTuristaHotel().setVisible(true);
             }
         });
     }
@@ -276,8 +290,10 @@ JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
     private javax.swing.JButton jButton3;
     private com.toedter.calendar.JDateChooser jCalendarCheckIn;
     private com.toedter.calendar.JDateChooser jCalendarCheckOut;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
