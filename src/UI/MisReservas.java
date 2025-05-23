@@ -594,9 +594,9 @@ private void editarReservaSeleccionada() {
         String tipoID = safeToString(modelor, fila, 2);
         String documento = safeToString(modelor, fila, 3);
         String lugar = safeToString(modelor, fila, 4);
-        String habitacion = safeToString(modelor, fila, 5);
-        String cantidadPersonasStr = safeToString(modelor, fila, 6);
-        String cantidadHabitacionesStr = safeToString(modelor, fila, 7);
+        String cantidadPersonasStr = safeToString(modelor, fila, 5);
+        String cantidadHabitacionesStr = safeToString(modelor, fila, 6);
+        String habitacion = safeToString(modelor, fila, 7);
         String checkInStr = safeToString(modelor, fila, 8);
         String checkOutStr = safeToString(modelor, fila, 9);
 
