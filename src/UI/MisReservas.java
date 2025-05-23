@@ -227,19 +227,20 @@ private void editarReservaSeleccionada() {
         cbxNumeroHabitacion = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         txtCantidadPersonas = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        Guardar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        Guardar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEditar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaReservas = new javax.swing.JTable();
+        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI Historic", 1, 24)); // NOI18N
         jLabel1.setText("Mis Reservas");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -248,128 +249,145 @@ private void editarReservaSeleccionada() {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(null);
 
-        cbxTipoId.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        cbxTipoId.setBackground(new java.awt.Color(204, 204, 204));
+        cbxTipoId.setFont(new java.awt.Font("Segoe UI Historic", 0, 14)); // NOI18N
         cbxTipoId.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "C.C", "N.I.T", "Pasaporte", "Licencia De Conducir" }));
         jPanel2.add(cbxTipoId);
-        cbxTipoId.setBounds(20, 120, 180, 25);
+        cbxTipoId.setBounds(20, 120, 180, 26);
 
+        txtNombres.setBackground(new java.awt.Color(204, 204, 204));
         txtNombres.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jPanel2.add(txtNombres);
         txtNombres.setBounds(20, 40, 180, 23);
 
+        txtApellidos.setBackground(new java.awt.Color(204, 204, 204));
         txtApellidos.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jPanel2.add(txtApellidos);
         txtApellidos.setBounds(20, 80, 180, 23);
 
+        txtDocumento.setBackground(new java.awt.Color(204, 204, 204));
         txtDocumento.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jPanel2.add(txtDocumento);
-        txtDocumento.setBounds(20, 160, 180, 23);
+        txtDocumento.setBounds(20, 170, 180, 23);
 
-        cbxLugar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        cbxLugar.setBackground(new java.awt.Color(204, 204, 204));
+        cbxLugar.setFont(new java.awt.Font("Segoe UI Historic", 0, 14)); // NOI18N
         cbxLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Habitacion", "Penthouse", "Salon de Eventos", "Restaurante", " " }));
         jPanel2.add(cbxLugar);
-        cbxLugar.setBounds(20, 200, 200, 25);
+        cbxLugar.setBounds(20, 230, 180, 20);
 
+        txtHabitaciones.setBackground(new java.awt.Color(204, 204, 204));
         txtHabitaciones.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jPanel2.add(txtHabitaciones);
         txtHabitaciones.setBounds(320, 80, 200, 20);
-        jPanel2.add(jCalendarCheckIn);
-        jCalendarCheckIn.setBounds(320, 160, 180, 22);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jCalendarCheckIn.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.add(jCalendarCheckIn);
+        jCalendarCheckIn.setBounds(320, 170, 200, 22);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Check In:");
         jPanel2.add(jLabel7);
-        jLabel7.setBounds(320, 140, 57, 17);
+        jLabel7.setBounds(320, 150, 80, 20);
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Check Out:");
         jPanel2.add(jLabel8);
-        jLabel8.setBounds(320, 180, 70, 17);
-        jPanel2.add(jCalendarCheckOut);
-        jCalendarCheckOut.setBounds(320, 200, 180, 22);
+        jLabel8.setBounds(320, 200, 90, 20);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jCalendarCheckOut.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel2.add(jCalendarCheckOut);
+        jCalendarCheckOut.setBounds(320, 220, 200, 22);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nombre:");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(20, 20, 100, 19);
+        jLabel3.setBounds(20, 20, 100, 20);
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Apellido:");
         jLabel4.setToolTipText("");
         jPanel2.add(jLabel4);
-        jLabel4.setBounds(20, 60, 80, 19);
+        jLabel4.setBounds(20, 60, 80, 20);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Tipo ID:");
         jPanel2.add(jLabel5);
-        jLabel5.setBounds(20, 100, 70, 19);
+        jLabel5.setBounds(20, 100, 70, 20);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Numero ID:");
         jPanel2.add(jLabel6);
-        jLabel6.setBounds(20, 140, 110, 19);
+        jLabel6.setBounds(20, 150, 110, 20);
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Lugar reserva:");
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(20, 180, 120, 19);
+        jLabel9.setBounds(20, 200, 140, 25);
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Numero de Habitaciones:");
         jPanel2.add(jLabel10);
-        jLabel10.setBounds(320, 60, 190, 19);
+        jLabel10.setBounds(320, 60, 190, 20);
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Numero de Habitacion:");
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(320, 100, 180, 19);
+        jLabel11.setBounds(320, 100, 180, 20);
 
-        cbxNumeroHabitacion.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        cbxNumeroHabitacion.setBackground(new java.awt.Color(204, 204, 204));
+        cbxNumeroHabitacion.setFont(new java.awt.Font("Segoe UI Historic", 0, 14)); // NOI18N
         cbxNumeroHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", " " }));
         jPanel2.add(cbxNumeroHabitacion);
-        cbxNumeroHabitacion.setBounds(320, 120, 200, 25);
+        cbxNumeroHabitacion.setBounds(320, 120, 200, 26);
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Cantidad de Personas:");
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(320, 20, 150, 17);
+        jLabel12.setBounds(320, 20, 150, 20);
+
+        txtCantidadPersonas.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.add(txtCantidadPersonas);
         txtCantidadPersonas.setBounds(320, 40, 200, 22);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton2.setText("Vaciar");
-        jPanel2.add(jButton2);
-        jButton2.setBounds(170, 230, 72, 24);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo (4).jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(0, -20, 540, 310);
 
-        Guardar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jPanel1.add(jPanel2);
+        jPanel2.setBounds(10, 40, 530, 260);
+
+        Guardar.setBackground(new java.awt.Color(0, 255, 153));
+        Guardar.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
         Guardar.setText("Guardar");
         Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GuardarActionPerformed(evt);
             }
         });
-        jPanel2.add(Guardar);
-        Guardar.setBounds(280, 230, 90, 24);
+        jPanel1.add(Guardar);
+        Guardar.setBounds(290, 310, 90, 27);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo (4).jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        jPanel2.add(jLabel2);
-        jLabel2.setBounds(0, 0, 530, 260);
+        jButton2.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 51, 51));
+        jButton2.setText("Vaciar");
+        jPanel1.add(jButton2);
+        jButton2.setBounds(190, 310, 90, 30);
 
-        jPanel1.add(jPanel2);
-        jPanel2.setBounds(10, 40, 530, 260);
-
-        btnEliminar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btnEliminar.setBackground(new java.awt.Color(255, 102, 102));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        btnEliminar.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminar.setText("Eliminar Reserva");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -377,7 +395,9 @@ private void editarReservaSeleccionada() {
             }
         });
 
-        btnActualizar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btnActualizar.setBackground(new java.awt.Color(51, 204, 255));
+        btnActualizar.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        btnActualizar.setForeground(new java.awt.Color(255, 255, 255));
         btnActualizar.setText("Actualizar");
         btnActualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -385,7 +405,9 @@ private void editarReservaSeleccionada() {
             }
         });
 
-        btnEditar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        btnEditar.setBackground(new java.awt.Color(51, 204, 255));
+        btnEditar.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        btnEditar.setForeground(new java.awt.Color(255, 255, 255));
         btnEditar.setText("Editar");
         btnEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -393,7 +415,9 @@ private void editarReservaSeleccionada() {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(0, 204, 255));
+        jButton1.setFont(new java.awt.Font("Segoe UI Historic", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Menu principal");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -434,48 +458,53 @@ private void editarReservaSeleccionada() {
         });
         jScrollPane1.setViewportView(tablaReservas);
 
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reservas.png"))); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(212, 212, 212)
-                        .addComponent(jLabel1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(btnActualizar)
-                                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(18, 18, 18)
+                                .addComponent(btnEliminar))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
-                                .addComponent(btnEliminar))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(28, 28, 28)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE)
+                                    .addComponent(btnEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)
+                        .addGap(142, 142, 142)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addComponent(jButton1))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel1))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(btnActualizar)
-                        .addGap(34, 34, 34)
                         .addComponent(btnEditar)
-                        .addGap(31, 31, 31)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnActualizar)
+                        .addGap(18, 18, 18)
                         .addComponent(btnEliminar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -698,6 +727,7 @@ private String safeToString(DefaultTableModel model, int fila, int columna) {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
