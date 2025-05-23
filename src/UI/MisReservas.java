@@ -52,26 +52,28 @@ public void cargarReservasEnTabla() {
     for (Reserva reserva : lista) {
         if (reserva == null) continue;
 
-        Date checkIn = reserva.getCheckIn();
-        Date checkOut = reserva.getCheckOut();
+Date checkIn = reserva.getCheckIn();
+Date checkOut = reserva.getCheckOut();
 
-        String checkInStr = (checkIn != null) ? formato.format(checkIn) : "Sin fecha";
-        String checkOutStr = (checkOut != null) ? formato.format(checkOut) : "Sin fecha";
+String checkInStr = (checkIn != null) ? formato.format(checkIn) : "Sin fecha";
+String checkOutStr = (checkOut != null) ? formato.format(checkOut) : "Sin fecha";
+
 
         modelo.addRow(new Object[]{
-            reserva.getNombres(),
-            reserva.getApellidos(),
-            reserva.getTipoIdentificacion(),
-            reserva.getDocumento(),
-            reserva.getLugar(),
-            reserva.getHabitacion(),
-            checkInStr,
-            checkOutStr,
-            reserva.getCantidadPersonas(),
-            reserva.getHabitaciones()
+reserva.getNombres(),
+    reserva.getApellidos(),
+    reserva.getTipoIdentificacion(),
+    reserva.getDocumento(),
+    reserva.getLugar(),
+      String.valueOf(reserva.getCantidadPersonas()),
+    reserva.getHabitacion(),
+    reserva.getHabitaciones(),
+     checkInStr,
+    checkOutStr
         });
     }
 }
+
 
 
 
@@ -272,7 +274,7 @@ private void editarReservaSeleccionada() {
         jPanel2.add(txtHabitaciones);
         txtHabitaciones.setBounds(320, 80, 200, 20);
         jPanel2.add(jCalendarCheckIn);
-        jCalendarCheckIn.setBounds(320, 160, 90, 22);
+        jCalendarCheckIn.setBounds(320, 160, 180, 22);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -286,7 +288,7 @@ private void editarReservaSeleccionada() {
         jPanel2.add(jLabel8);
         jLabel8.setBounds(320, 180, 70, 17);
         jPanel2.add(jCalendarCheckOut);
-        jCalendarCheckOut.setBounds(320, 200, 90, 22);
+        jCalendarCheckOut.setBounds(320, 200, 180, 22);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -401,21 +403,33 @@ private void editarReservaSeleccionada() {
 
         tablaReservas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "Apellido", "Tipo ID", "Numero ID", "Lugar reserva", "Numero de Habitacion", "Check in", "Check out", "Personas"
+                "Nombre", "Apellido", "Tipo ID", "Numero ID", "Lugar reserva", "Personas", "Numero de Habitacion", "Numero habitacion", "Check in", "Check out"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tablaReservas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablaReservasMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tablaReservas);
@@ -432,20 +446,18 @@ private void editarReservaSeleccionada() {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(33, 33, 33)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(btnActualizar)
-                                            .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(15, 15, 15)
-                                        .addComponent(btnEliminar)))))))
-                .addContainerGap(20, Short.MAX_VALUE))
+                                .addGap(30, 30, 30)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnActualizar)
+                                    .addComponent(btnEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(btnEliminar))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 887, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(39, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -504,7 +516,7 @@ private void editarReservaSeleccionada() {
         // Obtener datos del formulario
         String nombres = txtNombres.getText();
         String apellidos = txtApellidos.getText();
-        String tipoId = (String) cbxTipoId.getSelectedItem();
+        String tipoIdentificacion = (String) cbxTipoId.getSelectedItem();
         String documento = txtDocumento.getText();
         String lugar = (String) cbxLugar.getSelectedItem();
         Date fechaCheckIn = jCalendarCheckIn.getDate();
@@ -548,7 +560,7 @@ private void editarReservaSeleccionada() {
         Reserva nuevaReserva = new Reserva(
             nombres,
             apellidos,
-            tipoId,
+            tipoIdentificacion,
             documento,
             lugar,
             numeroHabitacionStr,
@@ -569,6 +581,71 @@ private void editarReservaSeleccionada() {
         // Mensaje de éxito
         JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
     }//GEN-LAST:event_GuardarActionPerformed
+
+    private void tablaReservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaReservasMouseClicked
+        // TODO add your handling code here:
+                                                
+   int fila = tablaReservas.getSelectedRow();
+    if (fila != -1) {
+        DefaultTableModel modelor = (DefaultTableModel) tablaReservas.getModel();
+
+        String nombres = safeToString(modelor, fila, 0);
+        String apellidos = safeToString(modelor, fila, 1);
+        String tipoID = safeToString(modelor, fila, 2);
+        String documento = safeToString(modelor, fila, 3);
+        String lugar = safeToString(modelor, fila, 4);
+        String habitacion = safeToString(modelor, fila, 5);
+        String cantidadPersonasStr = safeToString(modelor, fila, 6);
+        String cantidadHabitacionesStr = safeToString(modelor, fila, 7);
+        String checkInStr = safeToString(modelor, fila, 8);
+        String checkOutStr = safeToString(modelor, fila, 9);
+
+        // Asignar valores a campos de texto y combos
+        txtNombres.setText(nombres);
+        txtApellidos.setText(apellidos);
+        cbxTipoId.setSelectedItem(tipoID);
+        txtDocumento.setText(documento);
+        cbxLugar.setSelectedItem(lugar);
+        txtHabitaciones.setText(habitacion);
+        txtCantidadPersonas.setText(cantidadPersonasStr);
+        cbxNumeroHabitacion.setSelectedItem(cantidadHabitacionesStr);
+
+        // Convertir fechas y asignar a jCalendar
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        formato.setLenient(false);
+
+        try {
+            if (!checkInStr.isEmpty()) {
+                Date checkIn = formato.parse(checkInStr);
+                jCalendarCheckIn.setDate(checkIn);
+            } else {
+                jCalendarCheckIn.setDate(null);
+            }
+
+            if (!checkOutStr.isEmpty()) {
+                Date checkOut = formato.parse(checkOutStr);
+                jCalendarCheckOut.setDate(checkOut);
+            } else {
+                jCalendarCheckOut.setDate(null);
+            }
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "Error al convertir las fechas: " + e.getMessage());
+            jCalendarCheckIn.setDate(null);
+            jCalendarCheckOut.setDate(null);
+        }
+    }
+}
+
+// Método auxiliar para evitar errores al obtener valores
+private String safeToString(DefaultTableModel model, int fila, int columna) {
+    if (fila >= 0 && fila < model.getRowCount() && columna >= 0 && columna < model.getColumnCount()) {
+        Object val = model.getValueAt(fila, columna);
+        if (val != null) {
+            return val.toString();
+        }
+    }
+    return "";
+    }//GEN-LAST:event_tablaReservasMouseClicked
 
     /**
      * @param args the command line arguments

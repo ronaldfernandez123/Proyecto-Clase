@@ -32,28 +32,24 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="jPanel1" min="-2" pref="568" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="650" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="jPanel1" min="-2" pref="568" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
-                                          <Component id="btnEditar" min="-2" pref="89" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                                      <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnEditar" min="-2" pref="89" max="-2" attributes="0"/>
                               </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
+                  <Component id="jScrollPane1" min="-2" pref="887" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="20" max="32767" attributes="0"/>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -68,7 +64,7 @@
                   <Component id="jButton1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                       <Component id="btnActualizar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
@@ -77,10 +73,10 @@
                       <Component id="btnEliminar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="184" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jPanel1" max="32767" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Component id="jScrollPane1" min="-2" pref="340" max="-2" attributes="0"/>
@@ -224,7 +220,7 @@
             <Component class="com.toedter.calendar.JDateChooser" name="jCalendarCheckIn">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="320" y="160" width="90" height="-1"/>
+                  <AbsoluteConstraints x="320" y="160" width="180" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -263,7 +259,7 @@
             <Component class="com.toedter.calendar.JDateChooser" name="jCalendarCheckOut">
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="320" y="200" width="90" height="-1"/>
+                  <AbsoluteConstraints x="320" y="200" width="180" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -534,20 +530,26 @@
         <Component class="javax.swing.JTable" name="tablaReservas">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="9" rowCount="4">
-                <Column editable="true" title="Nombre" type="java.lang.String"/>
-                <Column editable="true" title="Apellido" type="java.lang.String"/>
-                <Column editable="true" title="Tipo ID" type="java.lang.String"/>
-                <Column editable="true" title="Numero ID" type="java.lang.Integer"/>
-                <Column editable="true" title="Lugar reserva" type="java.lang.String"/>
-                <Column editable="true" title="Numero de Habitacion" type="java.lang.String"/>
-                <Column editable="true" title="Check in" type="java.lang.String"/>
-                <Column editable="true" title="Check out" type="java.lang.String"/>
-                <Column editable="true" title="Personas" type="java.lang.String"/>
+              <Table columnCount="10" rowCount="4">
+                <Column editable="false" title="Nombre" type="java.lang.String"/>
+                <Column editable="false" title="Apellido" type="java.lang.String"/>
+                <Column editable="false" title="Tipo ID" type="java.lang.String"/>
+                <Column editable="false" title="Numero ID" type="java.lang.Integer"/>
+                <Column editable="false" title="Lugar reserva" type="java.lang.String"/>
+                <Column editable="false" title="Personas" type="java.lang.String"/>
+                <Column editable="false" title="Numero de Habitacion" type="java.lang.String"/>
+                <Column editable="false" title="Numero habitacion" type="java.lang.String"/>
+                <Column editable="false" title="Check in" type="java.lang.String"/>
+                <Column editable="false" title="Check out" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
               <TableColumnModel selectionModel="0">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                  <Title/>
+                  <Editor/>
+                  <Renderer/>
+                </Column>
                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
@@ -599,6 +601,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tablaReservasMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
