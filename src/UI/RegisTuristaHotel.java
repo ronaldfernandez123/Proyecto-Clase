@@ -5,6 +5,7 @@
 
 package UI;
 
+import DAO.ReservaDAO;
 import java.lang.String;
 import javax.swing.JOptionPane;
 import java.util.Date;
@@ -67,10 +68,10 @@ public class RegisTuristaHotel extends javax.swing.JFrame {
         cbxNumeroHabitacion = new javax.swing.JComboBox<>();
         jLabel12 = new javax.swing.JLabel();
         txtCantidadPersonas = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        Guardar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -182,6 +183,21 @@ public class RegisTuristaHotel extends javax.swing.JFrame {
         jPanel1.add(txtCantidadPersonas);
         txtCantidadPersonas.setBounds(320, 40, 200, 22);
 
+        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jButton1.setText("Vaciar");
+        jPanel1.add(jButton1);
+        jButton1.setBounds(170, 230, 72, 24);
+
+        Guardar.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        Guardar.setText("Guardar");
+        Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Guardar);
+        Guardar.setBounds(280, 230, 90, 24);
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo (4).jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
         jPanel1.add(jLabel2);
@@ -200,95 +216,81 @@ public class RegisTuristaHotel extends javax.swing.JFrame {
         getContentPane().add(jButton3);
         jButton3.setBounds(0, 350, 90, 24);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton1.setText("Vaciar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(170, 310, 72, 24);
-
-        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton2.setText("Guardar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(290, 310, 90, 24);
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
         // TODO add your handling code here:
-    
-Gson gson = new Gson();
-List<Reserva> reservas = new ArrayList<>();
+    Gson gson = new Gson();
 
-// Obtener datos del formulario
-String nombres = txtNombres.getText();
-String apellidos = txtApellidos.getText();
-String tipoId = (String) cbxTipoId.getSelectedItem();
-String documento = txtDocumento.getText();
-String lugar = (String) cbxLugar.getSelectedItem();
-Date fechaCheckIn = jCalendarCheckIn.getDate();
-Date fechaCheckOut = jCalendarCheckOut.getDate();
-int cantidadPersonas = Integer.parseInt(txtCantidadPersonas.getText());
-int habitaciones = Integer.parseInt(txtHabitaciones.getText());
-String numeroHabitacionStr = (String) cbxNumeroHabitacion.getSelectedItem();
-int numeroHabitacion = Integer.parseInt(numeroHabitacionStr);
+    // Obtener datos del formulario
+    String nombres = txtNombres.getText();
+    String apellidos = txtApellidos.getText();
+    String tipoId = (String) cbxTipoId.getSelectedItem();
+    String documento = txtDocumento.getText();
+    String lugar = (String) cbxLugar.getSelectedItem();
+    Date fechaCheckIn = jCalendarCheckIn.getDate();
+    Date fechaCheckOut = jCalendarCheckOut.getDate();
+    int cantidadPersonas = Integer.parseInt(txtCantidadPersonas.getText());
+    int habitaciones = Integer.parseInt(txtHabitaciones.getText());
+    String numeroHabitacionStr = (String) cbxNumeroHabitacion.getSelectedItem();
 
-// Validar valores positivos
-if (cantidadPersonas <= 0 || habitaciones <= 0) {
-    JOptionPane.showMessageDialog(this, "La cantidad de personas y habitaciones debe ser un número positivo.");
-    return;
-}
+    // Validar valores positivos
+    if (cantidadPersonas <= 0 || habitaciones <= 0) {
+        JOptionPane.showMessageDialog(this, "La cantidad de personas y habitaciones debe ser un número positivo.");
+        return;
+    }
 
-// Validar máximo de habitaciones según cantidad de personas
-int maxHabitaciones = 0;
-if (cantidadPersonas <= 4) {
-    maxHabitaciones = 1;
-} else if (cantidadPersonas <= 8) {
-    maxHabitaciones = 2;
-} else if (cantidadPersonas <= 12) {
-    maxHabitaciones = 3;
-} else {
-    JOptionPane.showMessageDialog(this, "No se permiten reservas para más de 12 personas.");
-    return;
-}
+    // Validar máximo de habitaciones según cantidad de personas
+    int maxHabitaciones = 0;
+    if (cantidadPersonas <= 4) {
+        maxHabitaciones = 1;
+    } else if (cantidadPersonas <= 8) {
+        maxHabitaciones = 2;
+    } else if (cantidadPersonas <= 12) {
+        maxHabitaciones = 3;
+    } else {
+        JOptionPane.showMessageDialog(this, "No se permiten reservas para más de 12 personas.");
+        return;
+    }
 
-if (habitaciones > maxHabitaciones) {
-    JOptionPane.showMessageDialog(this, "Para " + cantidadPersonas + " personas solo se permiten hasta " + maxHabitaciones + " habitaciones.");
-    return;
-}
+    if (habitaciones > maxHabitaciones) {
+        JOptionPane.showMessageDialog(this, "Para " + cantidadPersonas + " personas solo se permiten hasta " + maxHabitaciones + " habitaciones.");
+        return;
+    }
 
-// Validar que la habitación no esté reservada para la fecha
-GestorReservas gestor = new GestorReservas();
-if (gestor.habitacionYaReservada(numeroHabitacion, fechaCheckIn)) {
-    JOptionPane.showMessageDialog(this, "¡La habitación " + numeroHabitacion + " ya está reservada para esa fecha!");
-    return;
-}
+    // Validar que la habitación no esté reservada para las fechas seleccionadas
+    ReservaDAO gestor = new ReservaDAO();
+    if (gestor.habitacionYaReservada(numeroHabitacionStr, fechaCheckIn, fechaCheckOut)) {
+        JOptionPane.showMessageDialog(this, "¡La habitación " + numeroHabitacionStr + " ya está reservada para esas fechas!");
+        return;
+    }
 
-// Crear objeto Reserva
-Reserva nuevaReserva = new Reserva(nombres, apellidos, tipoId, documento, lugar, Personas, fechaCheckIn, fechaCheckOut);
-nuevaReserva.setCantidadPersonas(cantidadPersonas);
-nuevaReserva.setHabitaciones(habitaciones);
-nuevaReserva.setHabitaciones(numeroHabitacion); // Nuevo campo
+    // Crear objeto Reserva con todos los datos
+    Reserva nuevaReserva = new Reserva(
+        nombres,
+        apellidos,
+        tipoId,
+        documento,
+        lugar,
+        numeroHabitacionStr,
+        fechaCheckIn,
+        fechaCheckOut,
+        cantidadPersonas,
+        habitaciones
+    );
 
-// Guardar en JSON
-gestor.agregarReserva(nuevaReserva);
+    // Guardar la reserva en archivo JSON
+    gestor.agregarReserva(nuevaReserva);
 
-// Actualizar tabla si la ventana está abierta
-if (MisReservas.instanciaActiva != null) {
-    MisReservas.instanciaActiva.cargarReservasEnTabla();
-}
+    // Actualizar tabla de reservas si está abierta
+    if (MisReservas.instanciaActiva != null) {
+        MisReservas.instanciaActiva.cargarReservasEnTabla();
+    }
 
-// Mostrar mensaje
-JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
-
-
-
-
-    }//GEN-LAST:event_jButton2ActionPerformed
+    // Mensaje de éxito
+    JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
+    }//GEN-LAST:event_GuardarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
@@ -333,11 +335,11 @@ JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Guardar;
     private javax.swing.JComboBox<String> cbxLugar;
     private javax.swing.JComboBox<String> cbxNumeroHabitacion;
     private javax.swing.JComboBox<String> cbxTipoId;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private com.toedter.calendar.JDateChooser jCalendarCheckIn;
     private com.toedter.calendar.JDateChooser jCalendarCheckOut;

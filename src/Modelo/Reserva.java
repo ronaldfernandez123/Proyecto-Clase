@@ -1,11 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-/**
- *
- * @author Administrator
- */
 package Modelo;
 
 import java.util.Date;
@@ -17,26 +9,28 @@ public class Reserva {
     private String tipoIdentificacion;
     private String documento;
     private String lugar;
-    private String Habitacion;
+    private String habitacion;
     private Date checkIn;
     private Date checkOut;
     private int cantidadPersonas;
     private int habitaciones;
-    
 
-    public Reserva(String nuevosNombres, String nuevosApellidos, String nuevoTipoID, String nuevoDocumento, String nuevoLugar, String nuevoMotivo, String nuevoCheckIn, String nuevoCheckOut) {
-    }
-
-    public Reserva(String nombres, String apellidos, String tipoIdentificacion, String documento, String lugar, String Habitacion, Date checkIn, Date checkOut) {
+    // Constructor completo
+    public Reserva(String nombres, String apellidos, String tipoIdentificacion, String documento, String lugar,
+                   String habitacion, Date checkIn, Date checkOut, int cantidadPersonas, int habitaciones) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.tipoIdentificacion = tipoIdentificacion;
         this.documento = documento;
         this.lugar = lugar;
-        this.Habitacion = Habitacion;
-        this.checkIn = this.checkIn;
-        this.checkOut = this.checkOut;
+        this.habitacion = habitacion;
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
+        this.cantidadPersonas = cantidadPersonas;
+        this.habitaciones = habitaciones;
     }
+
+    // Getters y setters
 
     public String getNombres() {
         return nombres;
@@ -79,41 +73,42 @@ public class Reserva {
     }
 
     public String getHabitacion() {
-        return Habitacion;
+        return habitacion;
     }
 
-    public void setHabitacion(String Habitacion) {
-        this.Habitacion = Habitacion;
+    public void setHabitacion(String habitacion) {
+        this.habitacion = habitacion;
     }
 
     public Date getCheckIn() {
         return checkIn;
     }
 
-    public void setFechaCheckIn(Date fechaCheckIn) {
-        this.checkIn = fechaCheckIn;
+    public void setCheckIn(Date checkIn) {
+        this.checkIn = checkIn;
     }
 
     public Date getCheckOut() {
         return checkOut;
     }
 
-    public void setFechaCheckOut(Date fechaCheckOut) {
-        this.checkOut = fechaCheckOut;
-    }
-    
-    public int getCantidadPersonas() { 
-        return cantidadPersonas; 
-    }
-    
-    public void setCantidadPersonas(int cantidadPersonas) { 
-        this.cantidadPersonas = cantidadPersonas; 
+    public void setCheckOut(Date checkOut) {
+        this.checkOut = checkOut;
     }
 
-    public int getHabitaciones() { 
-        return habitaciones; 
+    public int getCantidadPersonas() {
+        return cantidadPersonas;
     }
-    public void setHabitaciones(int habitaciones) { 
-        this.habitaciones = habitaciones; 
+
+    public void setCantidadPersonas(int cantidadPersonas) {
+        this.cantidadPersonas = cantidadPersonas;
+    }
+
+    public int getHabitaciones() {
+        return habitaciones;
+    }
+
+    public void setHabitaciones(int habitaciones) {
+        this.habitaciones = habitaciones;
     }
 }

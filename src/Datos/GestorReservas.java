@@ -92,7 +92,7 @@ public class GestorReservas {
     }
 
     // Editar una reserva existente
-    public void editarReserva(String documentoAntiguo, String checkInAntiguo, Reserva nuevaReserva) {
+    public void editarReserva(String documentoAntiguo, Date checkInAntiguo, Reserva nuevaReserva) {
         List<Reserva> reservas = obtenerTodasLasReservas();
 
         for (int i = 0; i < reservas.size(); i++) {
@@ -112,7 +112,7 @@ public class GestorReservas {
         return new java.text.SimpleDateFormat("yyyy-MM-dd").format(fecha);
     }
 
-    public boolean habitacionYaReservada(int numeroHabitacion, Date fechaCheckIn) {
+    public boolean habitacionYaReservada(String numeroHabitacion, Date fechaCheckIn, Date fechaCheckOut) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

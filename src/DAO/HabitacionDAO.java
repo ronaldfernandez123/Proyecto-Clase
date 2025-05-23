@@ -9,9 +9,11 @@ package DAO;
  * @author SARA
  */
 
+
 import Modelo.Habitacion;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.Gson;
+
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -27,20 +29,33 @@ public class HabitacionDAO {
     }
 
     private List<Habitacion> cargarHabitaciones() {
+        File f = new File(archivo);
+        if (!f.exists()) {
+            // Si no existe, crea archivo vacío
+            guardarHabitaciones(new ArrayList<>());
+            return new ArrayList<>();
+        }
+
         try (Reader reader = new FileReader(archivo)) {
-            Type listType = new TypeToken<List<Habitacion>>(){}.getType();
-            return gson.fromJson(reader, listType);
+            Type listType = new TypeToken<List<Habitacion>>() {}.getType();
+            List<Habitacion> lista = gson.fromJson(reader, listType);
+            return lista != null ? lista : new ArrayList<>();
         } catch (IOException e) {
+            e.printStackTrace();
             return new ArrayList<>();
         }
     }
 
-    private void guardarHabitaciones() {
+    private void guardarHabitaciones(List<Habitacion> lista) {
         try (Writer writer = new FileWriter(archivo)) {
-            gson.toJson(habitaciones, writer);
+            gson.toJson(lista, writer);
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void guardarHabitaciones() {
+        guardarHabitaciones(this.habitaciones);
     }
 
     public void agregarHabitacion(Habitacion h) {
@@ -58,5 +73,27 @@ public class HabitacionDAO {
     public List<Habitacion> listarHabitaciones() {
         return habitaciones;
     }
-}
 
+    // NUEVO: Eliminar habitación
+    public boolean eliminarHabitacion(String numero) {
+        Habitacion h = buscarPorNumero(numero);
+        if (h != null) {
+            habitaciones.remove(h);
+            guardarHabitaciones();
+            return true;
+        }
+        return false;
+    }
+
+    // NUEVO: Editar habitación
+    public boolean editarHabitacion(String numero, Habitacion nueva) {
+        for (int i = 0; i < habitaciones.size(); i++) {
+            if (habitaciones.get(i).getNumero().equals(numero)) {
+                habitaciones.set(i, nueva);
+                guardarHabitaciones();
+                return true;
+            }
+        }
+        return false;
+    }
+}

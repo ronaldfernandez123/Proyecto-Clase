@@ -9,36 +9,50 @@ package Modelo;
  * @author SARA
  */
 
+
 public class Habitacion {
     private String numero;
     private String tipo;
     private double precio;
     private boolean disponible;
 
-    public Habitacion(String numero, String tipo, double precio) {
+    public Habitacion(String numero, String tipo, double precio, boolean disponible) {
         this.numero = numero;
         this.tipo = tipo;
         this.precio = precio;
-        this.disponible = true;
+        this.disponible = disponible;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public double getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(double precio) {
+        this.precio = precio;
     }
 
     public boolean isDisponible() {
         return disponible;
     }
 
-    public void ocupar() {
-        this.disponible = false;
-    }
-
-    public void liberar() {
-        this.disponible = true;
-    }
-
-    // Getters y setters omitidos por brevedad
-
-    public Object getNumero() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 }
-
 
