@@ -17,20 +17,23 @@ public class Reserva {
     private String tipoIdentificacion;
     private String documento;
     private String lugar;
-    private String motivo;
+    private String Habitacion;
     private Date checkIn;
     private Date checkOut;
+    private int cantidadPersonas;
+    private int habitaciones;
+    
 
     public Reserva(String nuevosNombres, String nuevosApellidos, String nuevoTipoID, String nuevoDocumento, String nuevoLugar, String nuevoMotivo, String nuevoCheckIn, String nuevoCheckOut) {
     }
 
-    public Reserva(String nombres, String apellidos, String tipoIdentificacion, String documento, String lugar, String motivo, Date checkIn, Date checkOut) {
+    public Reserva(String nombres, String apellidos, String tipoIdentificacion, String documento, String lugar, String Habitacion, Date checkIn, Date checkOut) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.tipoIdentificacion = tipoIdentificacion;
         this.documento = documento;
         this.lugar = lugar;
-        this.motivo = motivo;
+        this.Habitacion = Habitacion;
         this.checkIn = this.checkIn;
         this.checkOut = this.checkOut;
     }
@@ -75,12 +78,12 @@ public class Reserva {
         this.lugar = lugar;
     }
 
-    public String getMotivo() {
-        return motivo;
+    public String getHabitacion() {
+        return Habitacion;
     }
 
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
+    public void setHabitacion(String Habitacion) {
+        this.Habitacion = Habitacion;
     }
 
     public Date getCheckIn() {
@@ -98,5 +101,19 @@ public class Reserva {
     public void setFechaCheckOut(Date fechaCheckOut) {
         this.checkOut = fechaCheckOut;
     }
+    
+    public int getCantidadPersonas() { 
+        return cantidadPersonas; 
+    }
+    
+    public void setCantidadPersonas(int cantidadPersonas) { 
+        this.cantidadPersonas = cantidadPersonas; 
+    }
 
+    public int getHabitaciones() { 
+        return habitaciones; 
+    }
+    public void setHabitaciones(int habitaciones) { 
+        this.habitaciones = habitaciones; 
+    }
 }

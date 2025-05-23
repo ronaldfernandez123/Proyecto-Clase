@@ -52,7 +52,7 @@ public class RegisTuristaHotel extends javax.swing.JFrame {
         txtApellidos = new javax.swing.JTextField();
         txtDocumento = new javax.swing.JTextField();
         cbxLugar = new javax.swing.JComboBox<>();
-        txtMotivo = new javax.swing.JTextField();
+        txtHabitaciones = new javax.swing.JTextField();
         jCalendarCheckIn = new com.toedter.calendar.JDateChooser();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -64,7 +64,9 @@ public class RegisTuristaHotel extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbxNumeroHabitacion = new javax.swing.JComboBox<>();
+        jLabel12 = new javax.swing.JLabel();
+        txtCantidadPersonas = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -102,11 +104,11 @@ public class RegisTuristaHotel extends javax.swing.JFrame {
         cbxLugar.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         cbxLugar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "Habitacion", "Penthouse", "Salon de Eventos", "Restaurante", " " }));
         jPanel1.add(cbxLugar);
-        cbxLugar.setBounds(320, 40, 200, 25);
+        cbxLugar.setBounds(20, 200, 200, 25);
 
-        txtMotivo.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jPanel1.add(txtMotivo);
-        txtMotivo.setBounds(320, 80, 200, 20);
+        txtHabitaciones.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jPanel1.add(txtHabitaciones);
+        txtHabitaciones.setBounds(320, 80, 200, 20);
         jPanel1.add(jCalendarCheckIn);
         jCalendarCheckIn.setBounds(320, 160, 90, 22);
 
@@ -153,7 +155,7 @@ public class RegisTuristaHotel extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Lugar reserva:");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(320, 20, 120, 19);
+        jLabel9.setBounds(20, 180, 120, 19);
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,10 +169,18 @@ public class RegisTuristaHotel extends javax.swing.JFrame {
         jPanel1.add(jLabel11);
         jLabel11.setBounds(320, 100, 180, 19);
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", " " }));
-        jPanel1.add(jComboBox1);
-        jComboBox1.setBounds(320, 120, 200, 25);
+        cbxNumeroHabitacion.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        cbxNumeroHabitacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione", "101", "102", "103", "104", "105", "106", "107", "108", "109", "110", " " }));
+        jPanel1.add(cbxNumeroHabitacion);
+        cbxNumeroHabitacion.setBounds(320, 120, 200, 25);
+
+        jLabel12.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel12.setText("Cantidad de Personas:");
+        jPanel1.add(jLabel12);
+        jLabel12.setBounds(320, 20, 150, 17);
+        jPanel1.add(txtCantidadPersonas);
+        txtCantidadPersonas.setBounds(320, 40, 200, 22);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Fondo (4).jpg"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -212,22 +222,60 @@ public class RegisTuristaHotel extends javax.swing.JFrame {
         // TODO add your handling code here:
     
 Gson gson = new Gson();
-List<Reserva> reservas = new ArrayList<>();        
-    String nombres = txtNombres.getText();
+List<Reserva> reservas = new ArrayList<>();
+
+// Obtener datos del formulario
+String nombres = txtNombres.getText();
 String apellidos = txtApellidos.getText();
 String tipoId = (String) cbxTipoId.getSelectedItem();
 String documento = txtDocumento.getText();
 String lugar = (String) cbxLugar.getSelectedItem();
-String motivo = txtMotivo.getText();
 Date fechaCheckIn = jCalendarCheckIn.getDate();
 Date fechaCheckOut = jCalendarCheckOut.getDate();
+int cantidadPersonas = Integer.parseInt(txtCantidadPersonas.getText());
+int habitaciones = Integer.parseInt(txtHabitaciones.getText());
+String numeroHabitacionStr = (String) cbxNumeroHabitacion.getSelectedItem();
+int numeroHabitacion = Integer.parseInt(numeroHabitacionStr);
+
+// Validar valores positivos
+if (cantidadPersonas <= 0 || habitaciones <= 0) {
+    JOptionPane.showMessageDialog(this, "La cantidad de personas y habitaciones debe ser un número positivo.");
+    return;
+}
+
+// Validar máximo de habitaciones según cantidad de personas
+int maxHabitaciones = 0;
+if (cantidadPersonas <= 4) {
+    maxHabitaciones = 1;
+} else if (cantidadPersonas <= 8) {
+    maxHabitaciones = 2;
+} else if (cantidadPersonas <= 12) {
+    maxHabitaciones = 3;
+} else {
+    JOptionPane.showMessageDialog(this, "No se permiten reservas para más de 12 personas.");
+    return;
+}
+
+if (habitaciones > maxHabitaciones) {
+    JOptionPane.showMessageDialog(this, "Para " + cantidadPersonas + " personas solo se permiten hasta " + maxHabitaciones + " habitaciones.");
+    return;
+}
+
+// Validar que la habitación no esté reservada para la fecha
+GestorReservas gestor = new GestorReservas();
+if (gestor.habitacionYaReservada(numeroHabitacion, fechaCheckIn)) {
+    JOptionPane.showMessageDialog(this, "¡La habitación " + numeroHabitacion + " ya está reservada para esa fecha!");
+    return;
+}
 
 // Crear objeto Reserva
-Reserva nuevaReserva = new Reserva(nombres, apellidos, tipoId, documento, lugar, motivo, fechaCheckIn, fechaCheckOut);
+Reserva nuevaReserva = new Reserva(nombres, apellidos, tipoId, documento, lugar, Personas, fechaCheckIn, fechaCheckOut);
+nuevaReserva.setCantidadPersonas(cantidadPersonas);
+nuevaReserva.setHabitaciones(habitaciones);
+nuevaReserva.setHabitaciones(numeroHabitacion); // Nuevo campo
 
-// Guardar con el gestor
-GestorReservas gestor = new GestorReservas();
-gestor.agregarReserva(nuevaReserva); // Esto guarda en JSON
+// Guardar en JSON
+gestor.agregarReserva(nuevaReserva);
 
 // Actualizar tabla si la ventana está abierta
 if (MisReservas.instanciaActiva != null) {
@@ -236,6 +284,8 @@ if (MisReservas.instanciaActiva != null) {
 
 // Mostrar mensaje
 JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
+
+
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -284,16 +334,17 @@ JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbxLugar;
+    private javax.swing.JComboBox<String> cbxNumeroHabitacion;
     private javax.swing.JComboBox<String> cbxTipoId;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private com.toedter.calendar.JDateChooser jCalendarCheckIn;
     private com.toedter.calendar.JDateChooser jCalendarCheckOut;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -305,8 +356,9 @@ JOptionPane.showMessageDialog(this, "Reserva guardada exitosamente.");
     private javax.swing.JPanel jPanel1;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCantidadPersonas;
     private javax.swing.JTextField txtDocumento;
-    private javax.swing.JTextField txtMotivo;
+    private javax.swing.JTextField txtHabitaciones;
     private javax.swing.JTextField txtNombres;
     // End of variables declaration//GEN-END:variables
 }

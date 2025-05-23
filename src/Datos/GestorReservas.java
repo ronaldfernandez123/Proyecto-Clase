@@ -111,6 +111,10 @@ public class GestorReservas {
         if (fecha == null) return "";
         return new java.text.SimpleDateFormat("yyyy-MM-dd").format(fecha);
     }
+
+    public boolean habitacionYaReservada(int numeroHabitacion, Date fechaCheckIn) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
 
 

@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 import Datos.GestorReservas;
 import Modelo.Reserva;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +39,8 @@ private String documentoUsuario;
 
 // Método para cargar reservas en la tabla
 public void cargarReservasEnTabla() {
-    model.setColumnIdentifiers(new Object[]{"Nombre","Apellido","Tipo ID","Numero ID","Lugar reserva","Check in","Check out"});
+    model.setColumnIdentifiers(new Object[]{
+    "Nombre", "Apellido", "Tipo ID", "Numero ID", "Lugar reserva", "Check in", "Check out", "Personas", "Habitaciones"});
     model.setRowCount(0);
     GestorReservas gestor = new GestorReservas();
     List<Reserva> lista = gestor.obtenerTodasLasReservas(); // este método debe leer el JSON
@@ -46,18 +48,22 @@ public void cargarReservasEnTabla() {
     DefaultTableModel modelo = (DefaultTableModel) tablaReservas.getModel();
     modelo.setRowCount(0); // Limpiar la tabla antes de agregar
 
+    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
     for (Reserva r : lista) {
-        modelo.addRow(new Object[]{
-            r.getNombres(),
-            r.getApellidos(),
-            r.getTipoIdentificacion(),
-            r.getDocumento(),
-            r.getLugar(),
-            r.getMotivo(),
-            r.getCheckIn(),
-            r.getCheckOut()
-        });
-    }
+    model.addRow(new Object[]{
+        r.getNombres(),
+        r.getApellidos(),
+        r.getTipoIdentificacion(),
+        r.getDocumento(),
+        r.getLugar(),
+        formatoFecha.format(r.getCheckIn()),
+        formatoFecha.format(r.getCheckOut()),
+        r.getCantidadPersonas(),
+        r.getHabitaciones(),
+        r.getHabitacion()
+    });
+}
+
 }
 
 
@@ -69,8 +75,9 @@ private void eliminarReservaSeleccionada() {
         return;
     }
 
-    String documento = (String) tablaReservas.getValueAt(fila, 3); // Documento
-    String checkIn = (String) tablaReservas.getValueAt(fila, 6);   // Check-In
+    DefaultTableModel modelo = (DefaultTableModel) tablaReservas.getModel();
+    String documento = (String) modelo.getValueAt(fila, 3);
+    String checkIn = (String) modelo.getValueAt(fila, 5);
 
     int confirm = JOptionPane.showConfirmDialog(this, "¿Eliminar esta reserva?", "Confirmar", JOptionPane.YES_NO_OPTION);
     if (confirm == JOptionPane.YES_OPTION) {
@@ -337,11 +344,11 @@ private void editarReservaSeleccionada() {
                 {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Hotel", "Nombre", "Apellido", "Tipo ID", "Numero ID", "Lugar reserva", "Numero de Habitacion", "Check in", "Check out"
+                "Nombre", "Apellido", "Tipo ID", "Numero ID", "Lugar reserva", "Numero de Habitacion", "Check in", "Check out", "Personas"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
