@@ -4,6 +4,10 @@
  */
 package UI;
 
+
+import java.awt.Dimension;
+
+
 /**
  *
  * @author SARA
@@ -15,6 +19,11 @@ public class Barranquilla extends javax.swing.JFrame {
      */
     public Barranquilla() {
         initComponents();
+        setMinimumSize(new Dimension(740, 540));
+        setSize(740, 540); // o el tamaño que prefieras
+        setLocationRelativeTo(null); // centra la ventana
+        setVisible(true); // asegura que se vea al abrirla
+
     }
 
     /**
@@ -30,19 +39,21 @@ public class Barranquilla extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        ReservarBPlaza = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        ReservarWindsor = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        ReservarCountry = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton4 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(755, 430));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(755, 483));
         getContentPane().setLayout(null);
 
@@ -62,10 +73,16 @@ public class Barranquilla extends javax.swing.JFrame {
         jPanel2.add(jLabel3);
         jLabel3.setBounds(150, 50, 190, 19);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton1.setText("Reservar");
-        jPanel2.add(jButton1);
-        jButton1.setBounds(590, 50, 85, 24);
+        ReservarBPlaza.setBackground(new java.awt.Color(0, 204, 204));
+        ReservarBPlaza.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        ReservarBPlaza.setText("Reservar");
+        ReservarBPlaza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReservarBPlazaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ReservarBPlaza);
+        ReservarBPlaza.setBounds(565, 50, 110, 26);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(10, 10, 690, 130);
@@ -83,10 +100,16 @@ public class Barranquilla extends javax.swing.JFrame {
         jPanel3.add(jLabel5);
         jLabel5.setBounds(150, 50, 210, 19);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton2.setText("Reservar");
-        jPanel3.add(jButton2);
-        jButton2.setBounds(590, 50, 85, 24);
+        ReservarWindsor.setBackground(new java.awt.Color(0, 204, 204));
+        ReservarWindsor.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        ReservarWindsor.setText("Reservar");
+        ReservarWindsor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReservarWindsorActionPerformed(evt);
+            }
+        });
+        jPanel3.add(ReservarWindsor);
+        ReservarWindsor.setBounds(570, 50, 100, 24);
 
         jPanel1.add(jPanel3);
         jPanel3.setBounds(10, 150, 690, 130);
@@ -104,24 +127,69 @@ public class Barranquilla extends javax.swing.JFrame {
         jPanel4.add(jLabel7);
         jLabel7.setBounds(150, 60, 210, 19);
 
-        jButton3.setFont(new java.awt.Font("Segoe UI Black", 1, 12)); // NOI18N
-        jButton3.setText("Reservar");
-        jPanel4.add(jButton3);
-        jButton3.setBounds(590, 50, 85, 24);
+        ReservarCountry.setBackground(new java.awt.Color(0, 204, 204));
+        ReservarCountry.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
+        ReservarCountry.setText("Reservar");
+        ReservarCountry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReservarCountryActionPerformed(evt);
+            }
+        });
+        jPanel4.add(ReservarCountry);
+        ReservarCountry.setBounds(575, 50, 100, 26);
 
         jPanel1.add(jPanel4);
         jPanel4.setBounds(10, 290, 690, 130);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(10, 30, 710, 430);
+        jPanel1.setBounds(20, 40, 710, 430);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("Seleccione El Hotel Donde Desea Hacer Su Reserva");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(150, 0, 470, 26);
+        jLabel1.setBounds(120, 0, 510, 26);
+
+        jButton4.setBackground(new java.awt.Color(0, 204, 255));
+        jButton4.setFont(new java.awt.Font("Segoe UI Historic", 1, 14)); // NOI18N
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("Regresar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(10, 480, 100, 30);
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/reserva.png"))); // NOI18N
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(20, 0, 50, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ReservarBPlazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservarBPlazaActionPerformed
+        // TODO add your handling code here:
+        new RegisTuristaHotel().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_ReservarBPlazaActionPerformed
+
+    private void ReservarCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservarCountryActionPerformed
+        // TODO add your handling code here:
+        new RegisTuristaHotel().setVisible(true);
+        
+    }//GEN-LAST:event_ReservarCountryActionPerformed
+
+    private void ReservarWindsorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReservarWindsorActionPerformed
+        // TODO add your handling code here:
+        new RegisTuristaHotel().setVisible(true);
+    }//GEN-LAST:event_ReservarWindsorActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        new Principal().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,9 +227,10 @@ public class Barranquilla extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton ReservarBPlaza;
+    private javax.swing.JButton ReservarCountry;
+    private javax.swing.JButton ReservarWindsor;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -169,6 +238,7 @@ public class Barranquilla extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
